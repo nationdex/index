@@ -62,13 +62,17 @@ def _format_name(name: str, fallback_id: str) -> str:
     return name or fallback_id
 
 
-def _build_install_url(repo_url: str, branch: str, version: str, owner: str, repo: str) -> str:
+def _build_install_url(
+    repo_url: str, branch: str, version: str, owner: str, repo: str
+) -> str:
     base = repo_url.rstrip("/")
     if base.endswith(".git"):
         base = base[:-4]
     if version:
         for tag in (f"v{version}", version):
-            tags_url = f"https://api.github.com/repos/{owner}/{repo}/git/refs/tags/{tag}"
+            tags_url = (
+                f"https://api.github.com/repos/{owner}/{repo}/git/refs/tags/{tag}"
+            )
             try:
                 response = requests.get(tags_url, timeout=REQUEST_TIMEOUT)
                 if response.status_code == 200:

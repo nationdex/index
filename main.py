@@ -8,7 +8,9 @@ from pathlib import Path
 def main() -> None:
     app_path = Path(__file__).parent / "app.py"
     raise SystemExit(
-        subprocess.call([sys.executable, "-m", "streamlit", "run", str(app_path), *sys.argv[1:]])
+        subprocess.call(
+            [sys.executable, "-m", "streamlit", "run", str(app_path), *sys.argv[1:]]
+        )
     )
 
 
