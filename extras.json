@@ -1,0 +1,9 @@
+{
+    "extras": [
+        {
+            "id": "ndscript",
+            "repo": "https://github.com/nationdex/ndscript",
+            "branch": "main"
+        }
+    ]
+}
