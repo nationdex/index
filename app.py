@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import base64
 import html as html_lib
 from pathlib import Path
 from textwrap import dedent
@@ -13,6 +14,7 @@ from resolver import ExtraMetadata, resolve_all_extras
 PAGE_TITLE = "NationDex Extras Index"
 PAGE_ICON = "📦"
 _STYLES_PATH = Path(__file__).parent / ".streamlit" / "styles.css"
+_LOGO_PATH = Path(__file__).parent / ".streamlit" / "logo.png"
 
 
 def _inject_styles() -> None:
@@ -22,6 +24,12 @@ def _inject_styles() -> None:
 
 def _render_html(fragment: str) -> None:
     st.markdown(dedent(fragment).strip(), unsafe_allow_html=True)
+
+
+@st.cache_data(show_spinner=False)
+def _logo_data_uri() -> str:
+    encoded = base64.b64encode(_LOGO_PATH.read_bytes()).decode("ascii")
+    return f"data:image/png;base64,{encoded}"
 
 
 SUBMIT_EXAMPLE = """{
@@ -51,6 +59,49 @@ def _author_names(authors: list[str | dict[str, str]] | None) -> str:
     return ", ".join(names)
 
 
+_ICON_GITHUB = (
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '
+    'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+    '<path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-.88.28-1.83 0-2.71-.88-.32-3.37 1.05-3.37 1.05A11.95 11.95 0 0 0 12 4c-.95 0-1.9.1-2.8.3-1.76-1.17-3.37-1.05-3.37-1.05-.88.32-1.16 1.83 0 2.71-.73 1.02-1.08 2.25-1 3.5 0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>'
+    '<path d="M9 18c-4.51 2-5-2-7-2"></path>'
+    "</svg>"
+)
+_ICON_EXTERNAL = (
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '
+    'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+    '<path d="M15 3h6v6"></path>'
+    '<path d="M10 14 21 3"></path>'
+    '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>'
+    "</svg>"
+)
+_ICON_LINK = (
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '
+    'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+    '<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>'
+    '<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>'
+    "</svg>"
+)
+
+
+def _link_icon(label: str) -> str:
+    normalized = label.lower()
+    if normalized in {"repository", "repo", "github"}:
+        return _ICON_GITHUB
+    if normalized in {"homepage", "home", "website", "documentation", "docs"}:
+        return _ICON_EXTERNAL
+    return _ICON_LINK
+
+
+def _link_button(href: str, label: str) -> str:
+    safe_href = html_lib.escape(href)
+    safe_label = html_lib.escape(label)
+    return (
+        f'<a class="nd-icon-link" href="{safe_href}" target="_blank" '
+        f'rel="noopener noreferrer" title="{safe_label}" aria-label="{safe_label}">'
+        f"{_link_icon(label)}</a>"
+    )
+
+
 def _matches_query(extra: ExtraMetadata, query: str) -> bool:
     haystack = " ".join(
         [
@@ -64,11 +115,17 @@ def _matches_query(extra: ExtraMetadata, query: str) -> bool:
 
 
 def _render_header() -> None:
+    logo_uri = html_lib.escape(_logo_data_uri(), quote=True)
     _render_html(
-        """
+        f"""
         <div class="nd-header">
-            <p class="nd-title">NationDex / Extras Index</p>
-            <p class="nd-subtitle">Community extras for Project NationDex 2026</p>
+            <div class="nd-header-brand">
+                <img class="nd-logo" src="{logo_uri}" alt="NationDex logo" />
+                <div class="nd-header-text">
+                    <p class="nd-title">NationDex / Extras Index</p>
+                    <p class="nd-subtitle">Community extras for Project NationDex 2026</p>
+                </div>
+            </div>
         </div>
         """
     )
@@ -93,8 +150,7 @@ def _render_extra_card(extra: ExtraMetadata) -> None:
     links: list[str] = []
     seen_urls: set[str] = set()
     if extra.get("repo"):
-        repo = html_lib.escape(extra["repo"])
-        links.append(f'<a href="{repo}" target="_blank">Repository</a>')
+        links.append(_link_button(extra["repo"], "Repository"))
         seen_urls.add(extra["repo"].rstrip("/").removesuffix(".git"))
     for label, url in (extra.get("urls") or {}).items():
         if not url:
@@ -103,9 +159,7 @@ def _render_extra_card(extra: ExtraMetadata) -> None:
         if normalized in seen_urls:
             continue
         seen_urls.add(normalized)
-        links.append(
-            f'<a href="{html_lib.escape(url)}" target="_blank">{html_lib.escape(label)}</a>'
-        )
+        links.append(_link_button(url, label))
     links_html = "".join(links)
 
     _render_html(
