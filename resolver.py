@@ -47,15 +47,25 @@ def parse_github_repo(repo_url: str) -> tuple[str, str] | None:
     return match.group("owner"), match.group("repo").removesuffix(".git")
 
 
-def fetch_raw_file(owner: str, repo: str, branch: str, filename: str) -> bytes | None:
-    url = f"https://raw.githubusercontent.com/{owner}/{repo}/{branch}/{filename}"
+def _github_get(url: str) -> requests.Response | None:
     try:
-        response = requests.get(url, timeout=REQUEST_TIMEOUT)
+        return requests.get(url, timeout=REQUEST_TIMEOUT)
     except requests.RequestException:
         return None
-    if response.status_code != 200:
+
+
+def fetch_raw_file(owner: str, repo: str, branch: str, filename: str) -> bytes | None:
+    url = f"https://raw.githubusercontent.com/{owner}/{repo}/{branch}/{filename}"
+    response = _github_get(url)
+    if response is None or response.status_code != 200:
         return None
     return response.content
+
+
+def _github_tag_exists(owner: str, repo: str, tag: str) -> bool:
+    url = f"https://api.github.com/repos/{owner}/{repo}/git/refs/tags/{tag}"
+    response = _github_get(url)
+    return response is not None and response.status_code == 200
 
 
 def _format_name(name: str, fallback_id: str) -> str:
@@ -70,15 +80,8 @@ def _build_install_url(
         base = base[:-4]
     if version:
         for tag in (f"v{version}", version):
-            tags_url = (
-                f"https://api.github.com/repos/{owner}/{repo}/git/refs/tags/{tag}"
-            )
-            try:
-                response = requests.get(tags_url, timeout=REQUEST_TIMEOUT)
-                if response.status_code == 200:
-                    return f"git+{base}.git@{tag}"
-            except requests.RequestException:
-                pass
+            if _github_tag_exists(owner, repo, tag):
+                return f"git+{base}.git@{tag}"
     return f"git+{base}.git#{branch}"
 
 
