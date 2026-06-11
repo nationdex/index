@@ -4,20 +4,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Community extras index for Project Nationdex 2026.">
+  <meta name="description" content="Community extras index for Project NationDex 2026.">
   <title>Nationdex | Extras</title>
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet"
-    integrity="sha384-yvnQ71IHGvMhr6ThVxOD5GNlmL3ABiJHVLg8erJYIEXJm/I6whbQfRNJvsVitGBm" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
-    integrity="sha384-wH75j6z1lH97ZOpMOInqhgKzFkAInZPPSPlZpYKYTOqsaizPvhQZmAtLcPKXpLyH" crossorigin="anonymous" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
-    integrity="sha384-F/bZzf7p3Joyp5psL90p/p89AZJsndkSoGwRpXcZhleCWhd8SnRuoYo4d0yirjJp" crossorigin="anonymous"></script>
-  <script src="https://cdn.tailwindcss.com"
-    integrity="sha384-igm5BeiBt36UU4gqwWS7imYmelpTsZlQ45FZf+XBn9MuJbn4nQr7yx1yFydocC/K" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -63,19 +59,6 @@
       background: transparent !important;
       padding: 0 !important;
     }
-
-    .inline-code {
-      color: #0c0a09;
-      background: rgb(120 113 108 / 0.1);
-      padding: 0.125rem 0.375rem;
-      border-radius: 0.25rem;
-      font-size: 0.75rem;
-    }
-
-    .dark .inline-code {
-      color: #e7e5e4;
-      background: rgb(168 162 158 / 0.1);
-    }
   </style>
   <script>
     if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -84,8 +67,7 @@
       document.documentElement.classList.remove('dark');
     }
   </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"
-    integrity="sha384-9Ax3MmS9AClxJyd5/zafcXXjxmwFhZCdsT6HJoJjarvCaAkJlk5QDzjLJm+Wdx5F" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script>
     document.addEventListener('alpine:init', () => {
       Alpine.store('theme', {
@@ -104,7 +86,7 @@
   <div class="mx-auto max-w-2xl px-4 sm:px-6 py-16 sm:py-20">
     <header class="flex items-center justify-between mb-12">
       <div class="flex items-center gap-4 sm:gap-5">
-        <img class="w-11 h-11 object-contain" src="logo.png" alt="Nationdex logo" />
+        <img class="w-11 h-11 object-contain" src="logo.png" alt="NationDex logo" />
         <div>
           <h1 class="font-medium tracking-tight text-xl sm:text-2xl text-primary-950 dark:text-white leading-tight">
             Nationdex</h1>
@@ -144,14 +126,11 @@
 
       <main x-show="tab === 'extras'" x-cloak>
         <div class="mb-6 relative">
-          <label for="search-input" class="sr-only">Search extras</label>
           <span
-            class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-primary-950/40 dark:text-primary-200/40"
-            aria-hidden="true">
+            class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-primary-950/40 dark:text-primary-200/40">
             <i class="ri-search-line"></i>
           </span>
-          <input id="search-input" type="search" placeholder="Search by name or description…"
-            aria-label="Search extras"
+          <input id="search-input" type="text" placeholder="Search by name or description…"
             class="w-full transition rounded-xl pl-10 pr-4 py-3 text-sm bg-primary-500/10 dark:bg-primary-400/10 text-primary-950 dark:text-primary-200 placeholder-primary-400 dark:placeholder-primary-500 focus:outline-none " />
         </div>
         <p id="extras-count" class="text-xs dark:text-primary-200/70 text-primary-950/70 mb-6">Loading extras…</p>
@@ -180,11 +159,19 @@
               <h3 class="font-semibold text-base text-primary-950 dark:text-white mb-3">1. Repository hierarchy</h3>
               <ul class="list-disc pl-5 text-sm dark:text-primary-200/60 text-primary-950/60 space-y-2">
                 <li>Fork this repo</li>
-                <li>Check the <code class="inline-code">src</code> folder</li>
-                <li>Inside <code class="inline-code">src</code>:
+                <li>Check <code
+                    class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">src</code>
+                  folder</li>
+                <li>Check <code
+                    class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">commands</code>
+                  folder:
                   <ul class="list-circle pl-5 mt-2 space-y-2">
-                    <li>For <strong>slash commands</strong>: use the <code class="inline-code">slash</code> folder</li>
-                    <li>For <strong>prefix commands</strong>: use the <code class="inline-code">cmds</code> folder</li>
+                    <li>For <strong>slash commands</strong>: use <code
+                        class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">slash</code>
+                      commands folder</li>
+                    <li>For <strong>prefix commands</strong>: use <code
+                        class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">cmds</code>
+                      folder</li>
                   </ul>
                 </li>
                 <li>Create a file in your desired folder.</li>
@@ -196,7 +183,7 @@
                 structure</h3>
               <p class="text-sm dark:text-primary-200/60 text-primary-950/60 mb-4">Example ping command (prefix)
                 structure inside your file (e.g. <code
-                  class="inline-code">ping.ts</code>):
+                  class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">ping.ts</code>):
               </p>
               <div class="relative bg-primary-900 p-5 rounded-3xl text-sm text-primary-100 group">
                 <button id="copy-prefix-btn"
@@ -209,7 +196,7 @@
 export default new BaseCommand({
   name: 'ping',
   type: 'messageCreate',
-  code: `hi $ping ms` // your exact ForgeScript code — replace this example
+  code: `hi $ping ms` // ur exact forgescript code, not this btw
 });</code></pre>
               </div>
             </div>
@@ -219,7 +206,7 @@ export default new BaseCommand({
                 structure</h3>
               <p class="text-sm dark:text-primary-200/60 text-primary-950/60 mb-4">Example ping command (slash)
                 structure inside your file (e.g. <code
-                  class="inline-code">ping.ts</code>):
+                  class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">ping.ts</code>):
               </p>
               <div class="relative bg-primary-900 p-5 rounded-3xl text-sm text-primary-100 group">
                 <button id="copy-slash-btn"
@@ -238,7 +225,7 @@ export default new ApplicationCommand({
       ApplicationIntegrationType.GuildInstall
     ],
   },
-  code: `hi $ping ms` // your exact ForgeScript code — replace this example
+  code: `hi $ping ms` // ur exact forgescript code, not this btw
 })</code></pre>
               </div>
             </div>
@@ -260,17 +247,26 @@ export default new ApplicationCommand({
               <h3 class="font-semibold text-base text-primary-950 dark:text-white mb-3">1. Create a repository</h3>
               <p class="text-sm dark:text-primary-200/60 text-primary-950/60 mb-4">Add your ForgeScript code file:</p>
               <ul class="list-disc pl-5 text-sm dark:text-primary-200/60 text-primary-950/60 space-y-2">
-                <li>Create the <code class="inline-code">src</code> folder (if not already)</li>
-                <li>Inside <code class="inline-code">src</code>, create the <code class="inline-code">cmds</code> folder
+                <li>Create folder <code
+                    class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">src</code>
                   (if not already)</li>
-                <li>Inside <code class="inline-code">cmds</code>, create the folder (<code
-                    class="inline-code">slash</code> or <code class="inline-code">prefix</code> — depends on your
-                  command type)</li>
-                <li>Inside that folder, add your ForgeScript code file (example: <code
-                    class="inline-code">ping.ts</code>)
+                <li>Inside <code
+                    class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">src</code>,
+                  create folder <code
+                    class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">cmds</code>
+                  (if not already)</li>
+                <li>Inside <code
+                    class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">cmds</code>,
+                  create folder (<code
+                    class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">slash</code>
+                  or <code
+                    class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">prefix</code>
+                  - depends)</li>
+                <li>Inside folder, add your ForgeScript code file (example: <code
+                    class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">ping.ts</code>)
                   [add your file name & code]</li>
                 <li><code
-                    class="inline-code">main.ts</code>
+                    class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">main.ts</code>
                   is not needed</li>
               </ul>
             </div>
@@ -285,11 +281,11 @@ export default new ApplicationCommand({
                   Copy
                 </button>
                 <pre class="overflow-x-auto"><code id="code-example-pkg" class="language-json">{
-  "name": "your-repo-name", // change to your repo name
+  "name": "your-repo-name", //change it to ur repo name
   "version": "1.0.0",
-  "description": "An example of a ForgeScript community extra for Project Nationdex 2026.", // change to your description
-  "license": "MIT", // change to your license
-  "author": "your-username" // change to your username
+  "description": "An example of a ForgeScript community extra for Project Nationdex 2026.", //change it to ur description
+  "license": "MIT", //change it to ur license
+  "author": "your-username" //change it to ur username
 }</code></pre>
               </div>
             </div>
@@ -298,7 +294,7 @@ export default new ApplicationCommand({
               <h3 class="font-semibold text-base text-primary-950 dark:text-white mb-3">3. Fork this index repository
                 and add your entry</h3>
               <p class="text-sm dark:text-primary-200/60 text-primary-950/60 mb-4">Fork this index repo and edit <code
-                  class="inline-code">data/extras.json</code>
+                  class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded-md text-sm">data/extras.json</code>
                 in your fork to add your entry:</p>
               <div class="relative bg-primary-900 p-5 rounded-3xl text-sm text-primary-100 group">
                 <button id="copy-json-btn"
@@ -308,11 +304,11 @@ export default new ApplicationCommand({
                 </button>
                 <pre class="overflow-x-auto"><code id="code-example-json" class="language-json">{
   "extras": [
-    // ... existing entries above; add a comma, then this:
+    // ... alr entries will be made just add "," next line, then this:
     {
-      "id": "your-extra-id", // change to your extra id
-      "repo": "https://github.com/yourusername/your-repo-name", // change to your repo URL
-      "branch": "main" // change to your branch
+      "id": "ur-extra-id", //change it to ur extra id
+      "repo": "https://github.com/yourusername/your-repo-name", //change it to ur repo url
+      "branch": "main" //change it to ur branch
     }
   ]
 }</code></pre>
