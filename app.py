@@ -7,9 +7,14 @@ import html as html_lib
 from pathlib import Path
 from textwrap import dedent
 
+import importlib
+
 import streamlit as st
 
-from resolver import ExtraMetadata, resolve_all_extras
+import resolver
+
+importlib.reload(resolver)
+ExtraMetadata = resolver.ExtraMetadata
 
 PAGE_TITLE = "NationDex Extras Index"
 PAGE_ICON = "📦"
@@ -208,20 +213,17 @@ def _render_packages_tab(extras: list[ExtraMetadata]) -> None:
 
 def _render_submit_tab() -> None:
     st.markdown("### Submit an extra")
-    st.markdown("Add your package to `extras.json` and open a pull request.")
-    st.divider()
+    st.markdown("Add your package to `data/extras.json` and open a pull request.")
 
     st.markdown("**1 · Fork this repository**")
     st.markdown("Fork the index repo on GitHub and clone your fork locally.")
 
-    st.markdown("**2 · Add your extra to extras.json**")
+    st.markdown("**2 · Add your extra to data/extras.json**")
     st.markdown("Append an entry with your package id, repository URL, and branch.")
     st.code(SUBMIT_EXAMPLE, language="json")
     st.caption(
         "Include a `package.json` at the repo root with name, version, and description."
     )
-
-    st.divider()
 
     st.markdown("**3 · Open a pull request**")
     st.markdown(
@@ -230,8 +232,9 @@ def _render_submit_tab() -> None:
 
 
 @st.cache_data(ttl=3600, show_spinner=False)
-def _load_resolved_extras() -> list[ExtraMetadata]:
-    return resolve_all_extras()
+def _load_resolved_extras(extras_path: str) -> list[ExtraMetadata]:
+    importlib.reload(resolver)
+    return resolver.resolve_all_extras()
 
 
 def main() -> None:
@@ -240,7 +243,7 @@ def main() -> None:
     _render_header()
 
     with st.spinner("Loading extras…"):
-        extras = _load_resolved_extras()
+        extras = _load_resolved_extras(str(resolver.EXTRAS_FILE))
 
     packages_tab, submit_tab = st.tabs(["Extras", "Submit"])
 

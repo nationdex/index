@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Any, TypedDict, cast
 
 REPO_ROOT = Path(__file__).parent.parent
-EXTRAS_FILE = REPO_ROOT / "extras.json"
+EXTRAS_FILE = REPO_ROOT / "data" / "extras.json"
 GITHUB_RE = re.compile(r"^https://github\.com/[^/]+/[^/]+$")
 
 

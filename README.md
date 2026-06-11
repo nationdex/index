@@ -4,7 +4,7 @@ A clean static frontend project created for Project Nationdex 2026 in order to l
 
 ## Submitting extras
 
-In order to submit an extra, just reach to `extras.json` and add your entry.
+In order to submit an extra, just reach to `data/extras.json` and add your entry.
 
 ```json
 {
@@ -14,4 +14,4 @@ In order to submit an extra, just reach to `extras.json` and add your entry.
 }
 ```
 
-Make sure to replace the silly `id`, `repo`, and `branch` inputs with yours.
+Make sure to replace the silly `id`, `repo`, and `branch` inputs with yours, then submit your pull request.

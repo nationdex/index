@@ -3,17 +3,18 @@
 from __future__ import annotations
 
 import json
+import os
 import re
-import tomllib
 from pathlib import Path
 from typing import Any, TypedDict, cast
+
 import requests
 
 REPO_ROOT = Path(__file__).parent
-EXTRAS_FILE = REPO_ROOT / "extras.json"
+EXTRAS_FILE = REPO_ROOT / "data" / "extras.json"
 REQUEST_TIMEOUT = 15
 
-GITHUB_RE = re.compile(r"github\.com[:/](?P<owner>[^/]+)/(?P<repo>[^/.\s]+)")
+GITHUB_RE = re.compile(r"github\.com[:/](?P<owner>[^/]+)/(?P<repo>[^/\s]+)")
 
 
 class ExtraMetadata(TypedDict, total=False):
@@ -35,7 +36,8 @@ class ExtraMetadata(TypedDict, total=False):
 
 
 def load_extras() -> list[dict[str, str]]:
-    with open(EXTRAS_FILE, encoding="utf-8") as f:
+    extras_file = Path(__file__).resolve().parent / "data" / "extras.json"
+    with open(extras_file, encoding="utf-8") as f:
         data = json.load(f)
     return data.get("extras", [])
 
@@ -47,9 +49,17 @@ def parse_github_repo(repo_url: str) -> tuple[str, str] | None:
     return match.group("owner"), match.group("repo").removesuffix(".git")
 
 
-def _github_get(url: str) -> requests.Response | None:
+def _github_headers() -> dict[str, str]:
+    headers = {"Accept": "application/vnd.github+json"}
+    if token := os.environ.get("GITHUB_TOKEN"):
+        headers["Authorization"] = f"Bearer {token}"
+    return headers
+
+
+def _github_get(url: str, *, api: bool = False) -> requests.Response | None:
     try:
-        return requests.get(url, timeout=REQUEST_TIMEOUT)
+        headers = _github_headers() if api else None
+        return requests.get(url, timeout=REQUEST_TIMEOUT, headers=headers)
     except requests.RequestException:
         return None
 
@@ -64,7 +74,7 @@ def fetch_raw_file(owner: str, repo: str, branch: str, filename: str) -> bytes |
 
 def _github_tag_exists(owner: str, repo: str, tag: str) -> bool:
     url = f"https://api.github.com/repos/{owner}/{repo}/git/refs/tags/{tag}"
-    response = _github_get(url)
+    response = _github_get(url, api=True)
     return response is not None and response.status_code == 200
 
 
@@ -82,27 +92,11 @@ def _build_install_url(
         for tag in (f"v{version}", version):
             if _github_tag_exists(owner, repo, tag):
                 return f"git+{base}.git@{tag}"
-    return f"git+{base}.git#{branch}"
-
-
-def _parse_pyproject(content: bytes) -> dict[str, Any]:
-    data = tomllib.loads(content.decode())
-    project = data.get("project", {})
-    return {
-        "name": project.get("name", ""),
-        "version": project.get("version", ""),
-        "description": project.get("description", ""),
-        "license": project.get("license", ""),
-        "authors": project.get("authors", []),
-        "urls": project.get("urls", {}),
-        "dependencies": project.get("dependencies", []),
-        "kind": "python",
-        "path": project.get("name", ""),
-    }
+    return f"git+{base}.git@{branch}"
 
 
 def _parse_package_json(content: bytes) -> dict[str, Any]:
-    data = json.loads(content)
+    data = json.loads(content.decode())
     authors: list[Any] = []
     if author := data.get("author"):
         authors = [author]
@@ -131,6 +125,13 @@ def _parse_package_json(content: bytes) -> dict[str, Any]:
     }
 
 
+def _set_parse_error(metadata: dict[str, Any], extra_id: str, message: str) -> None:
+    metadata["error"] = message
+    metadata["name"] = extra_id
+    metadata["kind"] = "unknown"
+    metadata["path"] = extra_id
+
+
 def resolve_extra(entry: dict[str, str]) -> ExtraMetadata:
     extra_id = entry["id"]
     repo_url = entry["repo"]
@@ -149,18 +150,17 @@ def resolve_extra(entry: dict[str, str]) -> ExtraMetadata:
         return cast(ExtraMetadata, metadata)
 
     owner, repo = parsed
-    pyproject = fetch_raw_file(owner, repo, branch, "pyproject.toml")
-    if pyproject:
-        metadata.update(_parse_pyproject(pyproject))
-    else:
-        package_json = fetch_raw_file(owner, repo, branch, "package.json")
-        if package_json:
+    package_json = fetch_raw_file(owner, repo, branch, "package.json")
+    if package_json:
+        try:
             metadata.update(_parse_package_json(package_json))
-        else:
-            metadata["error"] = "No pyproject.toml or package.json found in repository."
-            metadata["name"] = extra_id
-            metadata["kind"] = "unknown"
-            metadata["path"] = extra_id
+        except UnicodeDecodeError, json.JSONDecodeError:
+            _set_parse_error(metadata, extra_id, "Failed to parse package.json.")
+    else:
+        metadata["error"] = "No package.json found in repository."
+        metadata["name"] = extra_id
+        metadata["kind"] = "unknown"
+        metadata["path"] = extra_id
 
     version = metadata.get("version", "")
     metadata["install_url"] = _build_install_url(repo_url, branch, version, owner, repo)

@@ -12,7 +12,8 @@ ENV UV_COMPILE_BYTECODE=1 \
 COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-install-project --no-editable
 
-COPY app.py resolver.py extras.json ./
+COPY app.py resolver.py ./
+COPY data ./data
 COPY .streamlit .streamlit
 
 EXPOSE 8501
