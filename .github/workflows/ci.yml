@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master, html]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Verify static site
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+
+      - name: Verify static site files
+        run: |
+          test -f index.html
+          test -f logo.png
+          test -f data/extras.json
+          grep -q './data/extras.json' index.html
