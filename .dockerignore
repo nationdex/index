@@ -1,9 +1,0 @@
-.venv
-.git
-.ruff_cache
-__pycache__
-*.py[oc]
-*.egg-info
-build/
-dist/
-wheels/

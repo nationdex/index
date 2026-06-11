@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en" class="transition" :class="{ 'dark': $store.theme.isDark }" x-data>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Community extras index for Project NationDex 2026.">
+  <title>Nationdex | Extras</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#fafaf9',
+              100: '#f5f5f4',
+              200: '#e7e5e4',
+              300: '#d6d3d1',
+              400: '#a8a29e',
+              500: '#78716c',
+              600: '#57534e',
+              700: '#44403c',
+              800: '#292524',
+              900: '#1c1917',
+              950: '#0c0a09',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    [x-cloak] {
+      display: none !important;
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    html {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .hljs {
+      background: transparent !important;
+      padding: 0 !important;
+    }
+  </style>
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    document.addEventListener('alpine:init', () => {
+      Alpine.store('theme', {
+        isDark: localStorage.getItem('theme') === 'dark' ||
+          (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches),
+        toggle() {
+          this.isDark = !this.isDark;
+          localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+        }
+      });
+    });
+  </script>
+</head>
+
+<body class="transition antialiased bg-primary-50 dark:bg-primary-950 dark:text-primary-200 text-primary-950">
+  <div class="mx-auto max-w-2xl px-4 sm:px-6 py-16 sm:py-20">
+    <header class="flex items-center justify-between mb-12">
+      <div class="flex items-center gap-4 sm:gap-5">
+        <img class="w-11 h-11 object-contain" src="logo.png" alt="NationDex logo" />
+        <div>
+          <h1 class="font-medium tracking-tight text-xl sm:text-2xl text-primary-950 dark:text-white leading-tight">
+            Nationdex</h1>
+          <p class="text-sm dark:text-primary-200/60 text-primary-950/60 mt-0.5">Community extras for Project Nationdex
+            2026</p>
+        </div>
+      </div>
+      <button
+        class="items-center inline-flex justify-center rounded-full transition dark:hover:bg-primary-400/10 dark:text-primary-200 focus-visible:ring-2 focus:outline-none h-10 w-10 hover:bg-primary-500/10 ring-primary-950 text-primary-950 shrink-0"
+        type="button" @click="$store.theme.toggle()">
+        <span class="sr-only">Toggle theme mode</span>
+        <i class="ri-sun-line text-xl" :class="{ 'hidden': !($store.theme.isDark) }" x-cloak></i>
+        <i class="ri-moon-line text-xl" :class="{ 'hidden': $store.theme.isDark }" x-cloak></i>
+      </button>
+    </header>
+
+    <div x-data="{ tab: 'extras' }">
+      <div class="flex mb-10 justify-start">
+        <nav class="inline-flex p-1 gap-1 bg-primary-500/10 dark:bg-primary-400/10 rounded-xl">
+          <button class="transition px-4 py-1.5 text-sm font-medium rounded-lg focus:outline-none"
+            :class="tab === 'extras' ? 'bg-primary-600 dark:bg-primary-400 text-white dark:text-primary-950' : 'dark:text-primary-200/70 text-primary-950/70 hover:text-primary-950 dark:hover:text-primary-200'"
+            @click="tab = 'extras'">
+            Extras
+          </button>
+          <button class="transition px-4 py-1.5 text-sm font-medium rounded-lg focus:outline-none"
+            :class="tab === 'example' ? 'bg-primary-600 dark:bg-primary-400 text-white dark:text-primary-950' : 'dark:text-primary-200/70 text-primary-950/70 hover:text-primary-950 dark:hover:text-primary-200'"
+            @click="tab = 'example'">
+            Example
+          </button>
+          <button class="transition px-4 py-1.5 text-sm font-medium rounded-lg focus:outline-none"
+            :class="tab === 'submit' ? 'bg-primary-600 dark:bg-primary-400 text-white dark:text-primary-950' : 'dark:text-primary-200/70 text-primary-950/70 hover:text-primary-950 dark:hover:text-primary-200'"
+            @click="tab = 'submit'">
+            Submit
+          </button>
+        </nav>
+      </div>
+
+      <main x-show="tab === 'extras'" x-cloak>
+        <div class="mb-6 relative">
+          <span
+            class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-primary-950/40 dark:text-primary-200/40">
+            <i class="ri-search-line"></i>
+          </span>
+          <input id="search-input" type="text" placeholder="Search by name or description…"
+            class="w-full transition rounded-xl pl-10 pr-4 py-3 text-sm bg-primary-500/10 dark:bg-primary-400/10 text-primary-950 dark:text-primary-200 placeholder-primary-400 dark:placeholder-primary-500 focus:outline-none " />
+        </div>
+        <p id="extras-count" class="text-xs dark:text-primary-200/70 text-primary-950/70 mb-6">Loading extras…</p>
+        <div id="extras-list" class="flex flex-col gap-4">
+          <div id="extras-loader">
+            <div class="p-5 bg-primary-500/10 dark:bg-primary-400/10 rounded-3xl animate-pulse">
+              <div class="h-4 bg-primary-500/20 dark:bg-primary-400/20 rounded w-1/4 mb-4"></div>
+              <div class="h-3 bg-primary-500/20 dark:bg-primary-400/20 rounded w-3/4 mb-3"></div>
+              <div class="h-3 bg-primary-500/20 dark:bg-primary-400/20 rounded w-1/2"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <section x-show="tab === 'example'" x-cloak>
+        <div class="flex flex-col gap-10">
+          <div>
+            <h2 class="font-medium tracking-tight text-xl sm:text-2xl mb-4">Example structure</h2>
+            <p class="text-base dark:text-primary-200/70 text-primary-950/70">
+              Below are templates illustrating how to organize your commands inside your repository.
+            </p>
+          </div>
+
+          <div class="flex flex-col gap-12">
+            <div>
+              <h3 class="font-semibold text-base text-primary-950 dark:text-white mb-3">1. Repository hierarchy</h3>
+              <ul class="list-disc pl-5 text-sm dark:text-primary-200/60 text-primary-950/60 space-y-2">
+                <li>Fork this repo</li>
+                <li>Check <code
+                    class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">src</code>
+                  folder</li>
+                <li>Check <code
+                    class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">commands</code>
+                  folder:
+                  <ul class="list-circle pl-5 mt-2 space-y-2">
+                    <li>For <strong>slash commands</strong>: use <code
+                        class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">slash</code>
+                      commands folder</li>
+                    <li>For <strong>prefix commands</strong>: use <code
+                        class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">cmds</code>
+                      folder</li>
+                  </ul>
+                </li>
+                <li>Create a file in your desired folder.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-base text-primary-950 dark:text-white mb-3">2. Example prefix command
+                structure</h3>
+              <p class="text-sm dark:text-primary-200/60 text-primary-950/60 mb-4">Example ping command (prefix)
+                structure inside your file (e.g. <code
+                  class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">ping.ts</code>):
+              </p>
+              <div class="relative bg-primary-900 p-5 rounded-3xl text-sm text-primary-100 group">
+                <button id="copy-prefix-btn"
+                  class="absolute top-4 right-4 text-xs transition rounded-full px-3 py-1 bg-white/10 hover:bg-white/20 text-primary-300 flex items-center gap-1.5">
+                  <i class="ri-file-copy-line"></i>
+                  Copy
+                </button>
+                <pre class="overflow-x-auto"><code id="code-example-prefix" class="language-typescript">import { BaseCommand } from '@tryforge/forgescript';
+
+export default new BaseCommand({
+  name: 'ping',
+  type: 'messageCreate',
+  code: `hi $ping ms` // ur exact forgescript code, not this btw
+});</code></pre>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-base text-primary-950 dark:text-white mb-3">3. Example slash command
+                structure</h3>
+              <p class="text-sm dark:text-primary-200/60 text-primary-950/60 mb-4">Example ping command (slash)
+                structure inside your file (e.g. <code
+                  class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">ping.ts</code>):
+              </p>
+              <div class="relative bg-primary-900 p-5 rounded-3xl text-sm text-primary-100 group">
+                <button id="copy-slash-btn"
+                  class="absolute top-4 right-4 text-xs transition rounded-full px-3 py-1 bg-white/10 hover:bg-white/20 text-primary-300 flex items-center gap-1.5">
+                  <i class="ri-file-copy-line"></i>
+                  Copy
+                </button>
+                <pre class="overflow-x-auto"><code id="code-example-slash" class="language-typescript">import { ApplicationCommand } from '@tryforge/forgescript';
+import { ApplicationCommandType, ApplicationIntegrationType } from 'discord.js';
+
+export default new ApplicationCommand({
+  data: {
+    type: ApplicationCommandType.ChatInput,
+    name: 'ping',
+    integration_types: [
+      ApplicationIntegrationType.GuildInstall
+    ],
+  },
+  code: `hi $ping ms` // ur exact forgescript code, not this btw
+})</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section x-show="tab === 'submit'" x-cloak>
+        <div class="flex flex-col gap-10">
+          <div>
+            <h2 class="font-medium tracking-tight text-xl sm:text-2xl mb-4">Submit an extra</h2>
+            <p class="text-base dark:text-primary-200/70 text-primary-950/70">
+              Submit your package to the index by following these steps.
+            </p>
+          </div>
+
+          <div class="flex flex-col gap-12">
+            <div>
+              <h3 class="font-semibold text-base text-primary-950 dark:text-white mb-3">1. Create a repository</h3>
+              <p class="text-sm dark:text-primary-200/60 text-primary-950/60 mb-4">Add your ForgeScript code file:</p>
+              <ul class="list-disc pl-5 text-sm dark:text-primary-200/60 text-primary-950/60 space-y-2">
+                <li>Create folder <code
+                    class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">src</code>
+                  (if not already)</li>
+                <li>Inside <code
+                    class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">src</code>,
+                  create folder <code
+                    class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">cmds</code>
+                  (if not already)</li>
+                <li>Inside <code
+                    class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">cmds</code>,
+                  create folder (<code
+                    class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">slash</code>
+                  or <code
+                    class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">prefix</code>
+                  - depends)</li>
+                <li>Inside folder, add your ForgeScript code file (example: <code
+                    class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">ping.ts</code>)
+                  [add your file name & code]</li>
+                <li><code
+                    class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded text-xs">main.ts</code>
+                  is not needed</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-base text-primary-950 dark:text-white mb-3">2. Create package.json</h3>
+              <p class="text-sm dark:text-primary-200/60 text-primary-950/60 mb-4">Example structure:</p>
+              <div class="relative bg-primary-900 p-5 rounded-3xl text-sm text-primary-100 group">
+                <button id="copy-pkg-btn"
+                  class="absolute top-4 right-4 text-xs transition rounded-full px-3 py-1 bg-white/10 hover:bg-white/20 text-primary-300 flex items-center gap-1.5">
+                  <i class="ri-file-copy-line"></i>
+                  Copy
+                </button>
+                <pre class="overflow-x-auto"><code id="code-example-pkg" class="language-json">{
+  "name": "your-repo-name", //change it to ur repo name
+  "version": "1.0.0",
+  "description": "An example of a ForgeScript community extra for Project Nationdex 2026.", //change it to ur description
+  "license": "MIT", //change it to ur license
+  "author": "your-username" //change it to ur username
+}</code></pre>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-base text-primary-950 dark:text-white mb-3">3. Fork this index repository
+                and add your entry</h3>
+              <p class="text-sm dark:text-primary-200/60 text-primary-950/60 mb-4">Fork this index repo and edit <code
+                  class="text-primary-950 dark:text-primary-200 bg-primary-500/10 dark:bg-primary-400/10 px-1.5 py-0.5 rounded-md text-sm">data/extras.json</code>
+                in your fork to add your entry:</p>
+              <div class="relative bg-primary-900 p-5 rounded-3xl text-sm text-primary-100 group">
+                <button id="copy-json-btn"
+                  class="absolute top-4 right-4 text-xs transition rounded-full px-3 py-1 bg-white/10 hover:bg-white/20 text-primary-300 flex items-center gap-1.5">
+                  <i class="ri-file-copy-line"></i>
+                  Copy
+                </button>
+                <pre class="overflow-x-auto"><code id="code-example-json" class="language-json">{
+  "extras": [
+    // ... alr entries will be made just add "," next line, then this:
+    {
+      "id": "ur-extra-id", //change it to ur extra id
+      "repo": "https://github.com/yourusername/your-repo-name", //change it to ur repo url
+      "branch": "main" //change it to ur branch
+    }
+  ]
+}</code></pre>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-base text-primary-950 dark:text-white mb-3">4. Open a pull request</h3>
+              <p class="text-sm dark:text-primary-200/60 text-primary-950/60 font-medium leading-relaxed">Check if it is
+                good to go!
+                Then go for pull request and submit.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const GITHUB_RE = /github\.com[:/]([^/]+)\/([^/\s]+)/;
+    let allExtras = [];
+
+    function parseGithubRepo(repoUrl) {
+      const match = repoUrl.match(GITHUB_RE);
+      if (!match) return null;
+      let repo = match[2];
+      if (repo.endsWith('.git')) repo = repo.slice(0, -4);
+      return { owner: match[1], repo };
+    }
+
+    async function checkRawFileExists(owner, repo, tag, filename) {
+      try {
+        const res = await fetch(`https://raw.githubusercontent.com/${owner}/${repo}/${tag}/${filename}`, { method: 'HEAD' });
+        return res.ok;
+      } catch {
+        return false;
+      }
+    }
+
+    async function buildInstallUrl(repoUrl, branch, version, owner, repo) {
+      let base = repoUrl.trim();
+      if (base.endsWith('.git')) base = base.slice(0, -4);
+      if (version) {
+        if (await checkRawFileExists(owner, repo, `v${version}`, 'package.json'))
+          return `git+${base}.git@v${version}`;
+        if (await checkRawFileExists(owner, repo, version, 'package.json'))
+          return `git+${base}.git@${version}`;
+      }
+      return `git+${base}.git@${branch}`;
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+    }
+
+    function formatAuthors(authors) {
+      if (!authors) return '';
+      const list = Array.isArray(authors) ? authors : [authors];
+      return list.map(a => typeof a === 'string' ? a : (a && a.name) || '').filter(Boolean).join(', ');
+    }
+
+    function formatLicense(license) {
+      if (!license) return '';
+      if (typeof license === 'string') return license;
+      return license.type || license.text || '';
+    }
+
+    async function resolveExtra(entry) {
+      const { id, repo: repoUrl, branch = 'main' } = entry;
+      const parsed = parseGithubRepo(repoUrl);
+      const result = {
+        id, repo: repoUrl, branch, display_name: id,
+        version: '', description: 'No description provided.',
+        authors: '', license: '', install_url: '', error: null, urls: {}
+      };
+      if (!parsed) { result.error = 'Invalid GitHub repository URL.'; return result; }
+      const { owner, repo } = parsed;
+      try {
+        const res = await fetch(`https://raw.githubusercontent.com/${owner}/${repo}/${branch}/package.json`);
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+        result.display_name = data.name || id;
+        result.version = data.version || '';
+        result.description = data.description || 'No description provided.';
+        result.authors = formatAuthors(data.author || data.authors);
+        result.license = formatLicense(data.license);
+        const urls = {};
+        if (data.homepage) urls['Homepage'] = data.homepage;
+        urls['Repository'] = repoUrl;
+        result.urls = urls;
+        result.install_url = await buildInstallUrl(repoUrl, branch, result.version, owner, repo);
+      } catch {
+        result.error = `Failed to resolve package.json from branch "${branch}".`;
+      }
+      return result;
+    }
+
+    function getLinkIconClass(label) {
+      const n = label.toLowerCase();
+      if (n === 'repository' || n === 'repo' || n === 'github') return 'ri-github-fill';
+      if (n === 'homepage' || n === 'home' || n === 'website' || n === 'documentation' || n === 'docs') return 'ri-arrow-right-up-box-line';
+      return 'ri-link';
+    }
+
+    function renderExtras(extras) {
+      const listDiv = document.getElementById('extras-list');
+      const countSpan = document.getElementById('extras-count');
+      countSpan.textContent = `${extras.length} extra${extras.length !== 1 ? 's' : ''}`;
+      if (extras.length === 0) {
+        listDiv.innerHTML = `<p class="text-center text-sm dark:text-primary-200/70 text-primary-950/70 py-10">No extras match your search.</p>`;
+        return;
+      }
+      listDiv.innerHTML = extras.map(extra => {
+        const title = escapeHtml(extra.display_name);
+        const versionHtml = extra.version
+          ? `<span class="text-xs font-medium text-primary-800 dark:text-primary-200 bg-primary-500/20 dark:bg-primary-400/20 px-2 py-0.5 rounded-full">v${escapeHtml(extra.version)}</span>`
+          : '';
+        const desc = escapeHtml(extra.description);
+        const metaParts = [extra.authors, extra.license].filter(Boolean);
+        const metaHtml = metaParts.length
+          ? `<p class="text-xs dark:text-primary-200/50 text-primary-950/50 mt-1">${escapeHtml(metaParts.join(' · '))}</p>`
+          : '';
+        const seenUrls = new Set();
+        const links = [];
+        if (extra.repo) {
+          seenUrls.add(extra.repo.replace(/\/$/, '').replace(/\.git$/, ''));
+          links.push(`<a class="inline-flex items-center justify-center w-7 h-7 rounded-full transition dark:text-primary-200 text-primary-950 hover:bg-primary-500/10 dark:hover:bg-primary-400/10" href="${escapeHtml(extra.repo)}" target="_blank" rel="noopener noreferrer" title="Repository"><i class="ri-github-fill text-lg"></i></a>`);
+        }
+        Object.entries(extra.urls || {}).forEach(([label, url]) => {
+          if (!url) return;
+          const clean = url.replace(/\/$/, '').replace(/\.git$/, '').replace(/^git\+/, '');
+          if (seenUrls.has(clean)) return;
+          seenUrls.add(clean);
+          links.push(`<a class="inline-flex items-center justify-center w-7 h-7 rounded-full transition dark:text-primary-200 text-primary-950 hover:bg-primary-500/10 dark:hover:bg-primary-400/10" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(label)}"><i class="${getLinkIconClass(label)} text-lg"></i></a>`);
+        });
+        const linksHtml = links.length ? `<div class="flex items-center gap-1 shrink-0 -mr-1.5 -mt-1.5">${links.join('')}</div>` : '';
+        const errorHtml = extra.error
+          ? `<p class="text-xs text-red-500 dark:text-red-400 mt-2">${escapeHtml(extra.error)}</p>`
+          : '';
+        return `
+          <div class="p-5 bg-primary-500/10 dark:bg-primary-400/10 rounded-3xl transition hover:bg-primary-500/[0.15] dark:hover:bg-primary-400/[0.15]">
+            <div class="flex items-start justify-between gap-4">
+              <div class="flex flex-col gap-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <h3 class="font-medium text-base text-primary-950 dark:text-white">${title}</h3>
+                  ${versionHtml}
+                </div>
+                ${metaHtml}
+              </div>
+              ${linksHtml}
+            </div>
+            <p class="text-sm dark:text-primary-200/70 text-primary-950/70 mt-3 leading-relaxed">${desc}</p>
+            ${errorHtml}
+          </div>`;
+      }).join('');
+    }
+
+    async function init() {
+      const listDiv = document.getElementById('extras-list');
+      const countSpan = document.getElementById('extras-count');
+      try {
+        const res = await fetch('./data/extras.json');
+        if (!res.ok) throw new Error('Could not fetch extras.json');
+        const data = await res.json();
+        const entries = data.extras || [];
+        if (entries.length === 0) {
+          countSpan.textContent = '0 extras listed';
+          listDiv.innerHTML = `<p class="text-center text-sm dark:text-primary-200/70 text-primary-950/70 py-10">No extras listed yet.</p>`;
+          return;
+        }
+        allExtras = await Promise.all(entries.map(resolveExtra));
+        renderExtras(allExtras);
+      } catch (err) {
+        countSpan.textContent = 'Failed to load extras index';
+        listDiv.innerHTML = `<p class="text-center text-sm text-red-500 py-10">${escapeHtml(err.message)}</p>`;
+      }
+    }
+
+    document.getElementById('search-input').addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      if (!q) { renderExtras(allExtras); return; }
+      renderExtras(allExtras.filter(x =>
+        x.display_name.toLowerCase().includes(q) ||
+        x.id.toLowerCase().includes(q) ||
+        x.description.toLowerCase().includes(q)
+      ));
+    });
+
+    function setupCopyBtn(btnId, codeId) {
+      const btn = document.getElementById(btnId);
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        const text = document.getElementById(codeId).innerText;
+        navigator.clipboard.writeText(text).then(() => {
+          btn.innerHTML = '<i class="ri-check-line"></i> Copied!';
+          setTimeout(() => { btn.innerHTML = '<i class="ri-file-copy-line"></i> Copy'; }, 1500);
+        });
+      });
+    }
+
+    setupCopyBtn('copy-prefix-btn', 'code-example-prefix');
+    setupCopyBtn('copy-slash-btn', 'code-example-slash');
+    setupCopyBtn('copy-pkg-btn', 'code-example-pkg');
+    setupCopyBtn('copy-json-btn', 'code-example-json');
+
+    init();
+    hljs.highlightAll();
+  </script>
+</body>
+
+</html>
