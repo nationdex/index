@@ -12,8 +12,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="vendor/highlight.js"></script>
+  <script src="vendor/tailwind.js"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -67,7 +67,7 @@
       document.documentElement.classList.remove('dark');
     }
   </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="vendor/alpine.js"></script>
   <script>
     document.addEventListener('alpine:init', () => {
       Alpine.store('theme', {
@@ -125,6 +125,17 @@
       </div>
 
       <main x-show="tab === 'extras'" x-cloak>
+        <section class="p-5 mb-6 rounded-3xl bg-primary-500/10 dark:bg-primary-400/10" aria-labelledby="connection-title">
+          <h2 id="connection-title" class="font-medium mb-2">Connect your dex</h2>
+          <p class="text-sm mb-4">Manage extras on your own instance. Use an API token created by the bot owner with /api token. The token stays in memory until you disconnect, close, or reload this tab; it is never saved to browser storage.</p>
+          <form id="instance-connect" class="flex flex-col gap-3">
+            <label class="text-sm">Instance HTTPS address<input id="instance-url" type="url" required placeholder="https://dex.example.com" class="block w-full rounded-xl p-3 mt-1 bg-primary-500/10" /></label>
+            <label class="text-sm">API token<input id="instance-token" type="password" required autocomplete="off" class="block w-full rounded-xl p-3 mt-1 bg-primary-500/10" /></label>
+            <div class="flex gap-3"><button type="submit" class="rounded-xl px-4 py-2 bg-primary-600 text-white">Connect</button><button id="instance-disconnect" type="button" class="rounded-xl px-4 py-2 bg-primary-500/10">Disconnect</button></div>
+          </form>
+          <p id="instance-status" role="status" aria-live="polite" class="text-sm mt-3">Not connected.</p>
+          <div id="instance-installed" class="mt-3"></div>
+        </section>
         <div class="mb-6 relative">
           <span
             class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-primary-950/40 dark:text-primary-200/40">
@@ -339,6 +350,10 @@ export default new ApplicationCommand({
     const GITHUB_RE = /github\.com[:/]([^/]+)\/([^/\s]+)/;
     let allExtras = [];
 
+    function safeLink(value) {
+      try { const url = new URL(value); return url.protocol === 'https:' ? url.href : ''; } catch { return ''; }
+    }
+
     function parseGithubRepo(repoUrl) {
       const match = repoUrl.match(GITHUB_RE);
       if (!match) return null;
@@ -389,7 +404,7 @@ export default new ApplicationCommand({
       const { id, repo: repoUrl, branch = 'main' } = entry;
       const parsed = parseGithubRepo(repoUrl);
       const result = {
-        id, repo: repoUrl, branch, display_name: id,
+        id, repo: repoUrl, branch, ref: typeof entry.ref === 'string' ? entry.ref.toLowerCase() : null, display_name: id,
         version: '', description: 'No description provided.',
         authors: '', license: '', install_url: '', error: null, urls: {}
       };
@@ -442,16 +457,16 @@ export default new ApplicationCommand({
           : '';
         const seenUrls = new Set();
         const links = [];
-        if (extra.repo) {
+        if (safeLink(extra.repo)) {
           seenUrls.add(extra.repo.replace(/\/$/, '').replace(/\.git$/, ''));
-          links.push(`<a class="inline-flex items-center justify-center w-7 h-7 rounded-full transition dark:text-primary-200 text-primary-950 hover:bg-primary-500/10 dark:hover:bg-primary-400/10" href="${escapeHtml(extra.repo)}" target="_blank" rel="noopener noreferrer" title="Repository"><i class="ri-github-fill text-lg"></i></a>`);
+          links.push(`<a class="inline-flex items-center justify-center w-7 h-7 rounded-full transition dark:text-primary-200 text-primary-950 hover:bg-primary-500/10 dark:hover:bg-primary-400/10" href="${escapeHtml(safeLink(extra.repo))}" target="_blank" rel="noopener noreferrer" title="Repository"><i class="ri-github-fill text-lg"></i></a>`);
         }
         Object.entries(extra.urls || {}).forEach(([label, url]) => {
-          if (!url) return;
+          if (!safeLink(url)) return;
           const clean = url.replace(/\/$/, '').replace(/\.git$/, '').replace(/^git\+/, '');
           if (seenUrls.has(clean)) return;
           seenUrls.add(clean);
-          links.push(`<a class="inline-flex items-center justify-center w-7 h-7 rounded-full transition dark:text-primary-200 text-primary-950 hover:bg-primary-500/10 dark:hover:bg-primary-400/10" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(label)}"><i class="${getLinkIconClass(label)} text-lg"></i></a>`);
+          links.push(`<a class="inline-flex items-center justify-center w-7 h-7 rounded-full transition dark:text-primary-200 text-primary-950 hover:bg-primary-500/10 dark:hover:bg-primary-400/10" href="${escapeHtml(safeLink(url))}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(label)}"><i class="${getLinkIconClass(label)} text-lg"></i></a>`);
         });
         const linksHtml = links.length ? `<div class="flex items-center gap-1 shrink-0 -mr-1.5 -mt-1.5">${links.join('')}</div>` : '';
         const errorHtml = extra.error
@@ -471,9 +486,98 @@ export default new ApplicationCommand({
             </div>
             <p class="text-sm dark:text-primary-200/70 text-primary-950/70 mt-3 leading-relaxed">${desc}</p>
             ${errorHtml}
+            <div class="extra-actions mt-3" data-extra-id="${escapeHtml(extra.id)}"></div>
           </div>`;
       }).join('');
+      renderExtraActions();
     }
+
+    let connection = null;
+    let installedExtras = [];
+    let operationBusy = false;
+    const statusNode = document.getElementById('instance-status');
+    function setStatus(message) { statusNode.textContent = message; }
+    async function instanceRequest(path, body) {
+      if (!connection) throw new Error('Connect your instance first.');
+      const response = await fetch(connection.url + path, {
+        method: body ? 'POST' : 'GET', mode: 'cors', credentials: 'omit', redirect: 'error', cache: 'no-store',
+        headers: { Authorization: 'Bearer ' + connection.token, ...(body ? { 'Content-Type': 'application/json' } : {}) },
+        ...(body ? { body: JSON.stringify(body) } : {}), signal: AbortSignal.timeout(120000)
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok || result?.ok === false) throw new Error(typeof result?.error === 'string' ? result.error : 'Instance returned HTTP ' + response.status);
+      return result;
+    }
+    async function refreshInstalled() {
+      const result = await instanceRequest('/v1/extras');
+      if (!Array.isArray(result?.extras)) throw new Error('This instance does not support the extras API.');
+      installedExtras = result.extras;
+      renderExtraActions();
+      renderInstalled();
+    }
+    function actionButton(label, action) {
+      const button = document.createElement('button');
+      button.type = 'button'; button.textContent = label;
+      button.className = 'rounded-xl px-4 py-2 text-sm bg-primary-500/10 hover:bg-primary-500/20';
+      button.disabled = operationBusy; button.addEventListener('click', action);
+      return button;
+    }
+    async function changeExtra(path, body, confirmation) {
+      if (operationBusy || !connection || !window.confirm(confirmation)) return;
+      operationBusy = true; renderExtraActions(); renderInstalled(); setStatus('Updating extras…');
+      try { const result = await instanceRequest(path, body); await refreshInstalled(); setStatus(result.restartRequired ? 'Extras updated. Restart the bot to apply this change.' : 'Extras updated.'); }
+      catch (error) { setStatus(error.message || 'The operation failed.'); }
+      finally { operationBusy = false; renderExtraActions(); renderInstalled(); }
+    }
+    function renderInstalled() {
+      const container = document.getElementById('instance-installed'); container.replaceChildren();
+      if (!connection) return;
+      const heading = document.createElement('h3'); heading.textContent = 'Installed extras'; container.append(heading);
+      if (!installedExtras.length) { const empty = document.createElement('p'); empty.textContent = 'No extras installed.'; container.append(empty); }
+      for (const extra of installedExtras) {
+        const row = document.createElement('div'); row.className = 'flex items-center justify-between gap-3 mt-2';
+        const label = document.createElement('span'); label.textContent = String(extra.id) + (extra.ref ? ' · ' + String(extra.ref).slice(0, 12) : '');
+        row.append(label, actionButton('Remove', () => changeExtra('/v1/extras/remove', { id: extra.id }, 'Remove ' + extra.id + '? Its saved data will be preserved.'))); container.append(row);
+      }
+    }
+    function renderExtraActions() {
+      document.querySelectorAll('.extra-actions').forEach(container => {
+        container.replaceChildren();
+        const extra = allExtras.find(item => item.id === container.dataset.extraId);
+        if (!extra) return;
+        if (!extra.ref || !/^[a-f0-9]{40}$/i.test(extra.ref)) {
+          const note = document.createElement('p'); note.className = 'text-xs'; note.textContent = 'Remote installation awaits a reviewed, pinned release.'; container.append(note); return;
+        }
+        if (!connection) return;
+        const installed = installedExtras.find(item => item.id === extra.id);
+        if (installed?.ref === extra.ref) { const note = document.createElement('p'); note.textContent = 'Installed'; container.append(note); return; }
+        container.append(actionButton(installed ? 'Update on instance' : 'Install on instance', () => changeExtra('/v1/extras/install', { id: extra.id, ref: extra.ref }, 'Install ' + extra.id + ' at ' + extra.ref + '? This executes code on your bot host.')));
+      });
+    }
+    document.getElementById('instance-connect').addEventListener('submit', async event => {
+      event.preventDefault();
+      if (operationBusy) return;
+      connection = null; installedExtras = []; renderInstalled(); renderExtraActions();
+      try {
+        const url = new URL(document.getElementById('instance-url').value);
+        if (url.protocol !== 'https:' || url.username || url.password || url.pathname !== '/' || url.search || url.hash) throw new Error('Enter an HTTPS origin, such as https://dex.example.com.');
+        const token = document.getElementById('instance-token').value.trim();
+        document.getElementById('instance-token').value = '';
+        if (!token) throw new Error('Enter an API token.');
+        const discoveryResponse = await fetch(url.origin + '/v1/discovery', {
+          mode: 'cors', credentials: 'omit', redirect: 'error', cache: 'no-store',
+          headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(10000)
+        });
+        const discovery = await discoveryResponse.json().catch(() => null);
+        if (!discoveryResponse.ok || discovery?.product !== 'Project Nationdex 2026' || discovery?.protocol?.extras !== 1) {
+          throw new Error('This instance does not advertise a compatible Nationdex extras API.');
+        }
+        connection = { url: url.origin, token }; setStatus('Connecting…'); await refreshInstalled(); setStatus('Connected to ' + url.host + '.');
+      } catch (error) { connection = null; installedExtras = []; renderInstalled(); renderExtraActions(); setStatus((error.message || 'Connection failed.') + ' Check the instance address, token and allowed browser origin.'); }
+    });
+    document.getElementById('instance-disconnect').addEventListener('click', () => {
+      connection = null; installedExtras = []; document.getElementById('instance-token').value = ''; renderInstalled(); renderExtraActions(); setStatus('Disconnected.');
+    });
 
     async function init() {
       const listDiv = document.getElementById('extras-list');
