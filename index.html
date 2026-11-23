@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-WpoZhLNE4RsSQBwwcn9EMdkYDkCvyXc1euYzL6DCTrI='; style-src 'self'; img-src 'self'; connect-src 'self' https:; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; require-trusted-types-for 'script'; trusted-types 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-P/XZ1fydPRg02xgaEo7Y81x2zTBB/stNBPnPoTgEAIg='; style-src 'self'; img-src 'self'; connect-src 'self' https:; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; require-trusted-types-for 'script'; trusted-types 'none'">
   <meta name="referrer" content="no-referrer">
   <meta name="description" content="Community extras for Project Nationdex 2026.">
   <title>Nationdex | Extras</title>
   <link rel="icon" href="logo.png" type="image/png">
   <link rel="stylesheet" href="assets/index.css">
-  <script type="module" src="assets/index.js" integrity="sha256-WpoZhLNE4RsSQBwwcn9EMdkYDkCvyXc1euYzL6DCTrI="></script>
+  <script type="module" src="assets/index.js" integrity="sha256-P/XZ1fydPRg02xgaEo7Y81x2zTBB/stNBPnPoTgEAIg="></script>
 </head>
 <body>
   <noscript>This catalogue requires JavaScript. No credentials are submitted without it.</noscript>
@@ -45,16 +45,21 @@
         <div id="extras-list" class="catalogue"></div>
       </section>
       <section id="example" role="tabpanel" aria-labelledby="tab-example" hidden>
-        <h2>Example structure</h2>
-        <p>ForgeScript command examples for extra authors. Match your extra’s entrypoint and registration to the target bot’s supported extras protocol.</p>
-        <h3>Prefix command</h3><div class="code-block"><button type="button" data-copy="code-example-prefix">Copy</button><pre><code id="code-example-prefix"></code></pre></div>
-        <h3>Slash command</h3><div class="code-block"><button type="button" data-copy="code-example-slash">Copy</button><pre><code id="code-example-slash"></code></pre></div>
+        <h2>Build an extra</h2>
+        <p>This example follows the current PND26 extras loader. Folder names below are suggestions; the root manifest and its entrypoint are required. The entrypoint must export <code>register(client)</code>.</p>
+        <p>PND26 does not install an extra's dependencies. Use APIs already available to the bot and account for dependency resolution on the host.</p>
+        <h3>Repository structure</h3><div class="code-block"><button type="button" data-copy="code-example-structure">Copy</button><pre><code id="code-example-structure"></code></pre></div>
+        <h3>package.json</h3><div class="code-block"><button type="button" data-copy="code-example-package">Copy</button><pre><code id="code-example-package"></code></pre></div>
+        <h3>nationdex.extra.json</h3><div class="code-block"><button type="button" data-copy="code-example-manifest">Copy</button><pre><code id="code-example-manifest"></code></pre></div>
+        <h3>src/index.ts</h3><div class="code-block"><button type="button" data-copy="code-example-entrypoint">Copy</button><pre><code id="code-example-entrypoint"></code></pre></div>
+        <h3>src/commands/hello.ts</h3><div class="code-block"><button type="button" data-copy="code-example-prefix">Copy</button><pre><code id="code-example-prefix"></code></pre></div>
+        <h3>src/slash/hello.ts</h3><div class="code-block"><button type="button" data-copy="code-example-slash">Copy</button><pre><code id="code-example-slash"></code></pre></div>
         <p id="copy-status" role="status"></p>
       </section>
       <section id="submit" role="tabpanel" aria-labelledby="tab-submit" hidden>
         <h2>Submit an extra</h2>
         <ol class="instructions">
-          <li><h3>Create your repository</h3><p>Add your extra’s source, a license and a <code>package.json</code> with its name, version, description and author. Follow the target instance’s extras manifest and registration requirements.</p></li>
+          <li><h3>Create your repository</h3><p>Add your extra’s source, a license, and a <code>package.json</code>. Add a root <code>nationdex.extra.json</code> with the extra ID, API version 1, and a relative entrypoint that exports <code>register(client)</code>. See the Example tab.</p></li>
           <li><h3>Pin a reviewed commit</h3><p>Remote installation requires a full 40-character Git commit SHA. A branch name alone does not authorize installation.</p></li>
           <li><h3>Add your catalogue entry</h3><p>Fork <a href="https://github.com/nationdex/index" target="_blank" rel="noopener noreferrer">nationdex/index</a> and edit <code>data/extras.json</code>.</p><pre><code>{
   "id": "example",

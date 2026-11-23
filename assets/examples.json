@@ -1,4 +1,8 @@
 {
-  "prefix": "import { BaseCommand } from '@tryforge/forgescript';\n\nexport default new BaseCommand({\n  name: 'ping',\n  type: 'messageCreate',\n  code: `hi $ping ms` // ur exact forgescript code, not this btw\n});",
-  "slash": "import { ApplicationCommand } from '@tryforge/forgescript';\nimport { ApplicationCommandType, ApplicationIntegrationType } from 'discord.js';\n\nexport default new ApplicationCommand({\n  data: {\n    type: ApplicationCommandType.ChatInput,\n    name: 'ping',\n    integration_types: [\n      ApplicationIntegrationType.GuildInstall\n    ],\n  },\n  code: `hi $ping ms` // ur exact forgescript code, not this btw\n})"
+  "structure": "example-extra/\n\u251c\u2500\u2500 package.json\n\u251c\u2500\u2500 nationdex.extra.json\n\u2514\u2500\u2500 src/\n    \u251c\u2500\u2500 index.ts\n    \u251c\u2500\u2500 commands/\n    \u2502   \u2514\u2500\u2500 hello.ts\n    \u2514\u2500\u2500 slash/\n        \u2514\u2500\u2500 hello.ts",
+  "manifest": "{\n  \"id\": \"example-extra\",\n  \"apiVersion\": 1,\n  \"entrypoint\": \"src/index.ts\"\n}",
+  "package": "{\n  \"name\": \"example-extra\",\n  \"version\": \"1.0.0\",\n  \"description\": \"An example Nationdex extra\",\n  \"license\": \"MIT\",\n  \"author\": \"Your name\"\n}",
+  "entrypoint": "import type { ForgeClient } from '@tryforge/forgescript';\nimport hello from './commands/hello';\nimport helloSlash from './slash/hello';\n\nexport function register(client: ForgeClient) {\n  client.commands.add(hello);\n  client.applicationCommands.add(helloSlash);\n}",
+  "prefix": "import { BaseCommand } from '@tryforge/forgescript';\n\nexport default new BaseCommand({\n  name: 'hello',\n  type: 'messageCreate',\n  code: `$sendMessage[Hello from an extra!]`,\n});",
+  "slash": "import { ApplicationCommand } from '@tryforge/forgescript';\n\nexport default new ApplicationCommand({\n  data: {\n    name: 'extra-hello',\n    description: 'Say hello from an extra',\n    type: 1,\n  },\n  code: `$interactionReply[Hello from an extra!]`,\n});"
 }

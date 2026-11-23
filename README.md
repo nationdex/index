@@ -21,8 +21,8 @@ Add an entry to `data/extras.json` and open a pull request:
 }
 ```
 
-A commit SHA is required for remote installation. Bot owners approve each repository and commit in their own panel.
+The current loader requires a root `nationdex.extra.json` with `id`, `apiVersion: 1`, and `entrypoint`. The entrypoint must export `register(client)`. A commit SHA is required for remote installation. Bot owners approve each repository and commit in their own panel.
 
 ## Development
 
-The site uses static HTML, CSS, and JavaScript. Serve the repository root with any static file server to preview it. After changing `assets/index.js`, run `python3 tests/update-integrity.py` to update its integrity hash.
+The site uses static HTML, CSS, and JavaScript. Serve the repository root with any static file server to preview it. After changing `assets/index.js`, update its SHA-256 hash in both the Content Security Policy and the script’s `integrity` attribute in `index.html`. The Example tab loads its templates from `assets/examples.json`.

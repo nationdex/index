@@ -561,7 +561,7 @@ function start() {
   );
   requestJSON("assets/examples.json", { limit: 16384 })
     .then((data) => {
-      for (const key of ["prefix", "slash"])
+      for (const key of ["structure", "package", "manifest", "entrypoint", "prefix", "slash"])
         $("code-example-" + key).textContent = text(data[key], 8000);
     })
     .catch(() => {
