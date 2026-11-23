@@ -17,11 +17,14 @@ Add an entry to `data/extras.json` and open a pull request:
   "id": "example",
   "repo": "https://github.com/yourusername/your-extra",
   "branch": "main",
+  "path": "extras/example",
   "ref": "<reviewed 40-character commit SHA>"
 }
 ```
 
-The current loader requires a root `nationdex.extra.json` with `id`, `apiVersion: 1`, and `entrypoint`. The entrypoint must export `register(client)`. A commit SHA is required for remote installation. Bot owners approve each repository and commit in their own panel.
+`path` is optional: omit it for a standalone repository, or set it to the extra folder in a monorepo. Use normal slash-separated folder names without traversal, encoded characters or backslashes. The bot owner approves this folder in the panel; the browser sends only the extra ID and commit to installation routes. Package metadata and unpacked-size estimates refer to that folder.
+
+The current loader requires a `nationdex.extra.json` with `id`, `apiVersion: 1`, and `entrypoint`. The entrypoint must export `register(client)`. A commit SHA is required for remote installation. Bot owners approve each repository and commit in their own panel.
 
 ## Development
 

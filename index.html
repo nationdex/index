@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-P/XZ1fydPRg02xgaEo7Y81x2zTBB/stNBPnPoTgEAIg='; style-src 'self'; img-src 'self'; connect-src 'self' https:; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; require-trusted-types-for 'script'; trusted-types 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-o98mwuBfndkDWg5yUsO+eXDS3RKS9Dt2E6HQU9et78M='; style-src 'self'; img-src 'self'; connect-src 'self' https:; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; require-trusted-types-for 'script'; trusted-types 'none'">
   <meta name="referrer" content="no-referrer">
   <meta name="description" content="Community extras for Project Nationdex 2026.">
   <title>Nationdex | Extras</title>
   <link rel="icon" href="logo.png" type="image/png">
   <link rel="stylesheet" href="assets/index.css">
-  <script type="module" src="assets/index.js" integrity="sha256-P/XZ1fydPRg02xgaEo7Y81x2zTBB/stNBPnPoTgEAIg="></script>
+  <script type="module" src="assets/index.js" integrity="sha256-o98mwuBfndkDWg5yUsO+eXDS3RKS9Dt2E6HQU9et78M="></script>
 </head>
 <body>
   <noscript>This catalogue requires JavaScript. No credentials are submitted without it.</noscript>
@@ -61,10 +61,11 @@
         <ol class="instructions">
           <li><h3>Create your repository</h3><p>Add your extra’s source, a license, and a <code>package.json</code>. Add a root <code>nationdex.extra.json</code> with the extra ID, API version 1, and a relative entrypoint that exports <code>register(client)</code>. See the Example tab.</p></li>
           <li><h3>Pin a reviewed commit</h3><p>Remote installation requires a full 40-character Git commit SHA. A branch name alone does not authorize installation.</p></li>
-          <li><h3>Add your catalogue entry</h3><p>Fork <a href="https://github.com/nationdex/index" target="_blank" rel="noopener noreferrer">nationdex/index</a> and edit <code>data/extras.json</code>.</p><pre><code>{
+          <li><h3>Add your catalogue entry</h3><p>For monorepos, set the optional <code>path</code> to the extra folder; omit it for a standalone repository. Fork <a href="https://github.com/nationdex/index" target="_blank" rel="noopener noreferrer">nationdex/index</a> and edit <code>data/extras.json</code>.</p><pre><code>{
   "id": "example",
   "repo": "https://github.com/yourusername/your-extra",
   "branch": "main",
+  "path": "extras/example",
   "ref": "&lt;reviewed 40-character commit SHA&gt;"
 }</code></pre></li>
           <li><h3>Open a pull request</h3><p>The catalogue lists extras. Each bot owner independently approves repositories and exact commits in their panel before installation is possible.</p></li>

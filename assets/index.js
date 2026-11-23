@@ -43,6 +43,18 @@ export function instanceOrigin(value) {
     throw new Error("Enter an HTTPS origin, such as https://dex.example.com.");
   return url.origin;
 }
+export function extraPath(value = "") {
+  if (
+    typeof value !== "string" ||
+    value.length > 200 ||
+    (value !== "" &&
+      !value
+        .split("/")
+        .every((part) => /^[A-Za-z0-9][A-Za-z0-9_.-]*$/.test(part)))
+  )
+    throw new Error("Invalid extra path.");
+  return value;
+}
 export function catalogue(data) {
   if (
     !data ||
@@ -78,7 +90,13 @@ export function catalogue(data) {
       (typeof entry.ref !== "string" || !SHA.test(entry.ref))
     )
       throw new Error("Invalid catalogue commit.");
-    return { id: entry.id, repository: repo, branch, ref: entry.ref ?? null };
+    return {
+      id: entry.id,
+      repository: repo,
+      branch,
+      ref: entry.ref ?? null,
+      path: extraPath(entry.path),
+    };
   });
 }
 function text(value, limit, fallback = "") {
@@ -115,6 +133,67 @@ export function metadata(data, entry) {
     ),
     homepage,
   };
+}
+export function unpackedSize(data, path = "") {
+  const prefix = extraPath(path);
+  if (
+    !data ||
+    data.truncated !== false ||
+    !Array.isArray(data.tree) ||
+    data.tree.length > 10000
+  )
+    throw new Error("Incomplete GitHub file tree.");
+  let bytes = 0;
+  let found = prefix === "";
+  for (const item of data.tree) {
+    if (
+      prefix &&
+      (typeof item?.path !== "string" || !item.path.startsWith(prefix + "/"))
+    )
+      continue;
+    found = true;
+    if (item?.type === "tree") continue;
+    if (
+      item?.type !== "blob" ||
+      !["100644", "100755"].includes(item.mode) ||
+      !Number.isSafeInteger(item.size) ||
+      item.size < 0
+    )
+      throw new Error("Invalid GitHub file tree.");
+    bytes += item.size;
+    if (!Number.isSafeInteger(bytes)) throw new Error("Invalid file size.");
+  }
+  if (!found) throw new Error("Extra folder is absent from the tree.");
+  return bytes;
+}
+function sizeLabel(bytes) {
+  if (bytes < 1024) return bytes + " B";
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KiB";
+  return (bytes / (1024 * 1024)).toFixed(1) + " MiB";
+}
+async function estimateSize(entry) {
+  if (!entry.ref) return null;
+  const base =
+    "https://api.github.com/repos/" +
+    entry.repository.owner +
+    "/" +
+    entry.repository.repo;
+  const commit = await requestJSON(base + "/git/commits/" + entry.ref, {
+    limit: 1048576,
+  });
+  if (
+    commit?.sha !== entry.ref ||
+    typeof commit?.tree?.sha !== "string" ||
+    !SHA.test(commit.tree.sha)
+  )
+    throw new Error("Invalid GitHub commit response.");
+  const tree = await requestJSON(
+    base + "/git/trees/" + commit.tree.sha + "?recursive=1",
+    { limit: 1048576 },
+  );
+  if (tree?.sha !== commit.tree.sha)
+    throw new Error("Invalid GitHub tree response.");
+  return unpackedSize(tree, entry.path);
 }
 export function installed(data) {
   if (
@@ -315,15 +394,43 @@ function start() {
           extra.id +
             " · " +
             extra.ref.slice(0, 12) +
-            (extra.enabled ? "" : " · removal pending"),
+            (extra.enabled
+              ? " · configured version; restart applies changes"
+              : " · removal pending restart"),
         ),
       );
+      const actions = node("div", undefined, "button-row");
+      if (extra.enabled && extras.some((item) => item.id === extra.id))
+        actions.append(button("Edit version", () => editVersion(extra)));
       if (extra.enabled)
-        row.append(
+        actions.append(
           button("Remove", () => change("/v1/extras/remove", { id: extra.id })),
         );
+      row.append(actions);
       container.append(row);
     }
+  }
+  function editVersion(extra) {
+    if (!active || busy || !extras.some((item) => item.id === extra.id)) return;
+    const value = window.prompt(
+      "Enter the full 40-character commit SHA for " +
+        extra.id +
+        ". The bot owner must approve this version in the panel first.",
+      extra.ref,
+    );
+    if (value === null) return;
+    const ref = value.trim().toLowerCase();
+    if (!SHA.test(ref)) {
+      status("Enter a full 40-character Git commit SHA.");
+      return;
+    }
+    if (ref === extra.ref) {
+      status(
+        "That commit is already configured. Restart the bot if a change is pending.",
+      );
+      return;
+    }
+    void change("/v1/extras/install", { id: extra.id, ref });
   }
   function renderActions() {
     document.querySelectorAll(".extra-actions").forEach((container) => {
@@ -339,7 +446,12 @@ function start() {
       if (!active) return;
       const item = active.items.find((e) => e.id === extra.id && e.enabled);
       if (item?.ref === extra.ref) {
-        container.append(node("p", "Installed"));
+        container.append(
+          node(
+            "p",
+            "Configured at this commit. Restart applies any pending change.",
+          ),
+        );
         return;
       }
       container.append(
@@ -485,6 +597,22 @@ function start() {
           ),
         );
       card.append(node("p", extra.description, "extra-description"));
+      if (extra.path)
+        card.append(node("p", "Extra folder: " + extra.path, "extra-meta"));
+      card.append(
+        node(
+          "p",
+          Number.isSafeInteger(extra.unpackedBytes)
+            ? "Estimated unpacked files: " +
+                sizeLabel(extra.unpackedBytes) +
+                ". Excludes Git transfer overhead and separately provided dependencies."
+            : "Unpacked size unavailable" +
+                (extra.ref
+                  ? ". GitHub may be unavailable or rate limited."
+                  : " until a reviewed commit is pinned."),
+          "extra-meta",
+        ),
+      );
       if (extra.error) card.append(node("p", extra.error, "error"));
       const actions = node("div", undefined, "extra-actions");
       actions.dataset.extraId = extra.id;
@@ -561,7 +689,14 @@ function start() {
   );
   requestJSON("assets/examples.json", { limit: 16384 })
     .then((data) => {
-      for (const key of ["structure", "package", "manifest", "entrypoint", "prefix", "slash"])
+      for (const key of [
+        "structure",
+        "package",
+        "manifest",
+        "entrypoint",
+        "prefix",
+        "slash",
+      ])
         $("code-example-" + key).textContent = text(data[key], 8000);
     })
     .catch(() => {
@@ -590,6 +725,10 @@ function start() {
                     entry.repository.repo +
                     "/" +
                     revision +
+                    (entry.path
+                      ? "/" +
+                        entry.path.split("/").map(encodeURIComponent).join("/")
+                      : "") +
                     "/package.json",
                   { allowPlainText: true },
                 ),
@@ -598,6 +737,11 @@ function start() {
             } catch {
               extras[i].error =
                 "Could not load package metadata. View the repository for details.";
+            }
+            try {
+              extras[i].unpackedBytes = await estimateSize(entry);
+            } catch {
+              extras[i].unpackedBytes = null;
             }
           }
         }),
