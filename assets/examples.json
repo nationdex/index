@@ -1,0 +1,4 @@
+{
+  "prefix": "import { BaseCommand } from '@tryforge/forgescript';\n\nexport default new BaseCommand({\n  name: 'ping',\n  type: 'messageCreate',\n  code: `hi $ping ms` // ur exact forgescript code, not this btw\n});",
+  "slash": "import { ApplicationCommand } from '@tryforge/forgescript';\nimport { ApplicationCommandType, ApplicationIntegrationType } from 'discord.js';\n\nexport default new ApplicationCommand({\n  data: {\n    type: ApplicationCommandType.ChatInput,\n    name: 'ping',\n    integration_types: [\n      ApplicationIntegrationType.GuildInstall\n    ],\n  },\n  code: `hi $ping ms` // ur exact forgescript code, not this btw\n})"
+}

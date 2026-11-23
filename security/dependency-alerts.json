@@ -1,0 +1,1752 @@
+{
+  "repository": "nationdex/index",
+  "review_date": "2026-11-23",
+  "alerts": [
+    {
+      "number": 101,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-wqgw-9xfh-qf2g",
+      "cve": "CVE-2026-128066",
+      "severity": "medium",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": "<= 12.3.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-wqgw-9xfh-qf2g",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 100,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-xcvg-w56q-r89m",
+      "cve": "CVE-2026-128067",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": "<= 12.3.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-xcvg-w56q-r89m",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 99,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-xvh5-g6gv-559v",
+      "cve": "CVE-2026-112902",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 5.4.0, <= 12.3.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-xvh5-g6gv-559v",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 98,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-23mf-xhv8-69c2",
+      "cve": null,
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": "<= 3.1.62",
+      "patched": {
+        "identifier": "3.2.0"
+      },
+      "url": "https://github.com/advisories/GHSA-23mf-xhv8-69c2",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 97,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-gq48-pqfc-9p58",
+      "cve": null,
+      "severity": "medium",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": "< 3.2.0",
+      "patched": {
+        "identifier": "3.2.0"
+      },
+      "url": "https://github.com/advisories/GHSA-gq48-pqfc-9p58",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 96,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-f9j4-qggq-h239",
+      "cve": null,
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "score": 8.1
+      },
+      "affected": ">= 3.1.30, < 3.2.0",
+      "patched": {
+        "identifier": "3.2.0"
+      },
+      "url": "https://github.com/advisories/GHSA-f9j4-qggq-h239",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 95,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-w8jc-g24h-crhw",
+      "cve": null,
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "score": 7.5
+      },
+      "affected": "<= 3.1.62",
+      "patched": {
+        "identifier": "3.2.0"
+      },
+      "url": "https://github.com/advisories/GHSA-w8jc-g24h-crhw",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 94,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-fx3j-rwgx-fr94",
+      "cve": null,
+      "severity": "medium",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
+        "score": 6.5
+      },
+      "affected": "<= 3.1.62",
+      "patched": {
+        "identifier": "3.2.0"
+      },
+      "url": "https://github.com/advisories/GHSA-fx3j-rwgx-fr94",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 93,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-m64x-33q8-m5h7",
+      "cve": null,
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": "<= 3.1.62",
+      "patched": {
+        "identifier": "3.2.0"
+      },
+      "url": "https://github.com/advisories/GHSA-m64x-33q8-m5h7",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 92,
+      "package": "certifi",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-6q48-6c7w-9gw2",
+      "cve": null,
+      "severity": "critical",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 2019.03.09, < 2026.10.18",
+      "patched": {
+        "identifier": "2026.10.18"
+      },
+      "url": "https://github.com/advisories/GHSA-6q48-6c7w-9gw2",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 91,
+      "package": "pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-5x8w-8jj5-q52h",
+      "cve": "CVE-2026-112398",
+      "severity": "critical",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": "<= 12.3.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-5x8w-8jj5-q52h",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 90,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-654x-cwwv-5j9c",
+      "cve": "CVE-2026-114501",
+      "severity": "medium",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 11.2.1, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-654x-cwwv-5j9c",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 89,
+      "package": "pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-78g4-xqwv-q3g8",
+      "cve": null,
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "score": 8.1
+      },
+      "affected": ">= 11.1.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-78g4-xqwv-q3g8",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 88,
+      "package": "Gitpython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-83vg-56qc-22m7",
+      "cve": "CVE-2026-114145",
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "score": 7.5
+      },
+      "affected": "<= 3.2.0",
+      "patched": {
+        "identifier": "3.2.1"
+      },
+      "url": "https://github.com/advisories/GHSA-83vg-56qc-22m7",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 87,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-g7cr-3p24-7wf7",
+      "cve": "CVE-2026-96778",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 9.4.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-g7cr-3p24-7wf7",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 86,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-9v9v-9qvf-h2hj",
+      "cve": "CVE-2026-96644",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": "< 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-9v9v-9qvf-h2hj",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 85,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-g4qv-2jxx-769h",
+      "cve": "CVE-2026-96643",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 11.0.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-g4qv-2jxx-769h",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 84,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-3j72-p6qg-6xp7",
+      "cve": "CVE-2026-96642",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": "< 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-3j72-p6qg-6xp7",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 83,
+      "package": "pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-4rm8-3hmm-39fg",
+      "cve": "CVE-2026-96641",
+      "severity": "medium",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+        "score": 6.5
+      },
+      "affected": "< 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-4rm8-3hmm-39fg",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 82,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-mrfp-p49p-3hf2",
+      "cve": "CVE-2026-96640",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 5.1.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-mrfp-p49p-3hf2",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 81,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-v9pv-5gc8-w2m6",
+      "cve": "CVE-2026-96639",
+      "severity": "critical",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "score": 9.8
+      },
+      "affected": ">= 11.0.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-v9pv-5gc8-w2m6",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 80,
+      "package": "pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-24rc-8hj2-v98c",
+      "cve": "CVE-2026-96638",
+      "severity": "medium",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+        "score": 6.5
+      },
+      "affected": ">= 9.1.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-24rc-8hj2-v98c",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 79,
+      "package": "pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-g842-9rc4-69pw",
+      "cve": "CVE-2026-96637",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": "< 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-g842-9rc4-69pw",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 78,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-p8hx-v2p6-rp84",
+      "cve": "CVE-2026-96636",
+      "severity": "medium",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+        "score": 6.5
+      },
+      "affected": "< 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-p8hx-v2p6-rp84",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 76,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-332p-7hrc-92wf",
+      "cve": "CVE-2026-112393",
+      "severity": "critical",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 2.0.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-332p-7hrc-92wf",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 75,
+      "package": "pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-4rr5-89j8-mwwm",
+      "cve": "CVE-2026-112396",
+      "severity": "medium",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "score": 5.9
+      },
+      "affected": ">= 11.3.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-4rr5-89j8-mwwm",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 74,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-f2g6-542v-9j58",
+      "cve": "CVE-2026-112406",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 5.1.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-f2g6-542v-9j58",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 73,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-5xm2-6676-qcp9",
+      "cve": "CVE-2026-112399",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 8.1.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-5xm2-6676-qcp9",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 72,
+      "package": "pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-gg2r-wvfm-q9rx",
+      "cve": "CVE-2026-112892",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 4.1.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-gg2r-wvfm-q9rx",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 71,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-jg86-v3jv-hrpm",
+      "cve": "CVE-2026-112894",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 5.1.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-jg86-v3jv-hrpm",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 70,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-254f-3936-288h",
+      "cve": "CVE-2026-112391",
+      "severity": "medium",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 5.1.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-254f-3936-288h",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 69,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-xgh8-jp6q-p5x8",
+      "cve": "CVE-2026-112901",
+      "severity": "medium",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": "<= 12.3.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-xgh8-jp6q-p5x8",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 68,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-rfgq-q3w2-pmv2",
+      "cve": "CVE-2026-112898",
+      "severity": "medium",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 9.1.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-rfgq-q3w2-pmv2",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 67,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-74r2-7ff9-mjj2",
+      "cve": "CVE-2026-112401",
+      "severity": "medium",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 5.4.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-74r2-7ff9-mjj2",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 66,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-22hg-r758-rrw9",
+      "cve": "CVE-2026-112390",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 7.2.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-22hg-r758-rrw9",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 65,
+      "package": "pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-fc9g-5qg7-mf45",
+      "cve": "CVE-2026-112891",
+      "severity": "medium",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 9.2.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-fc9g-5qg7-mf45",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 64,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-27h8-gf7j-v5hc",
+      "cve": "CVE-2026-112392",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": "<= 12.3.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-27h8-gf7j-v5hc",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 63,
+      "package": "pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-cp9v-662q-vvx9",
+      "cve": "CVE-2026-112405",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 12.0.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-cp9v-662q-vvx9",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 62,
+      "package": "pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-j4m9-6w36-pw47",
+      "cve": "CVE-2026-112893",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 10.0.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-j4m9-6w36-pw47",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 61,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-7mwm-ghpf-9vrm",
+      "cve": "CVE-2026-112402",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": "<= 12.3.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-7mwm-ghpf-9vrm",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 60,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-4558-3h8r-v8xp",
+      "cve": "CVE-2026-112394",
+      "severity": "medium",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": "<= 12.3.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-4558-3h8r-v8xp",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 59,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-w889-685w-c8fh",
+      "cve": "CVE-2026-112900",
+      "severity": "critical",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 2.6.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-w889-685w-c8fh",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 58,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-58r4-6rv3-gfh8",
+      "cve": "CVE-2026-112397",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": "<= 12.3.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-58r4-6rv3-gfh8",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 57,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-65qm-jvmh-6pqg",
+      "cve": "CVE-2026-112400",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 9.2.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-65qm-jvmh-6pqg",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 56,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-vx6w-vv9f-6gvg",
+      "cve": "CVE-2026-112899",
+      "severity": "medium",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 2.3.0, <= 12.3.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-vx6w-vv9f-6gvg",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 55,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-q45j-58j2-45rg",
+      "cve": "CVE-2026-112897",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 5.3.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-q45j-58j2-45rg",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 54,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-pchr-8j38-3x4p",
+      "cve": "CVE-2026-112896",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": "<= 12.3.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-pchr-8j38-3x4p",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 53,
+      "package": "pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-p4wg-p73j-c528",
+      "cve": "CVE-2026-112895",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 5.1.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-p4wg-p73j-c528",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 52,
+      "package": "pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-462x-pgg6-55fp",
+      "cve": "CVE-2026-112395",
+      "severity": "medium",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L",
+        "score": 6.5
+      },
+      "affected": ">= 8.2.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-462x-pgg6-55fp",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 51,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-c6hw-5grf-ff96",
+      "cve": "CVE-2026-112404",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 8.1.0, < 13.0.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-c6hw-5grf-ff96",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 50,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-8g5g-8vmr-9782",
+      "cve": "CVE-2026-112403",
+      "severity": "critical",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": "<= 12.3.0",
+      "patched": {
+        "identifier": "13.0.0"
+      },
+      "url": "https://github.com/advisories/GHSA-8g5g-8vmr-9782",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 48,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-59cr-6r3x-644w",
+      "cve": null,
+      "severity": "medium",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": "<= 3.1.61",
+      "patched": {
+        "identifier": "3.1.62"
+      },
+      "url": "https://github.com/advisories/GHSA-59cr-6r3x-644w",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 47,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-g5vv-9gxw-82hx",
+      "cve": "CVE-2026-87819",
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "score": 7.5
+      },
+      "affected": "<= 3.1.59",
+      "patched": {
+        "identifier": "3.1.60"
+      },
+      "url": "https://github.com/advisories/GHSA-g5vv-9gxw-82hx",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 46,
+      "package": "gitpython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-239g-whfq-7xj9",
+      "cve": "CVE-2026-87817",
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "score": 8.8
+      },
+      "affected": "<= 3.1.59",
+      "patched": {
+        "identifier": "3.1.60"
+      },
+      "url": "https://github.com/advisories/GHSA-239g-whfq-7xj9",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 45,
+      "package": "urllib3",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-gh4c-6fx4-qh6g",
+      "cve": "CVE-2026-97688",
+      "severity": "medium",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 2.6.2, < 2.8.0",
+      "patched": {
+        "identifier": "2.8.0"
+      },
+      "url": "https://github.com/advisories/GHSA-gh4c-6fx4-qh6g",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 44,
+      "package": "urllib3",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-vxq7-64xx-v4gw",
+      "cve": "CVE-2026-97689",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 1.10.3, < 2.8.0",
+      "patched": {
+        "identifier": "2.8.0"
+      },
+      "url": "https://github.com/advisories/GHSA-vxq7-64xx-v4gw",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 43,
+      "package": "urllib3",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-8988-9cw3-xx77",
+      "cve": "CVE-2026-97687",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 1.26.0, < 2.8.0",
+      "patched": {
+        "identifier": "2.8.0"
+      },
+      "url": "https://github.com/advisories/GHSA-8988-9cw3-xx77",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 42,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-rwj8-pgh3-r573",
+      "cve": "CVE-2026-67322",
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "score": 7.5
+      },
+      "affected": "< 3.1.52",
+      "patched": {
+        "identifier": "3.1.52"
+      },
+      "url": "https://github.com/advisories/GHSA-rwj8-pgh3-r573",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 41,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-94p4-4cq8-9g67",
+      "cve": null,
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "score": 7.5
+      },
+      "affected": "< 3.1.55",
+      "patched": {
+        "identifier": "3.1.55"
+      },
+      "url": "https://github.com/advisories/GHSA-94p4-4cq8-9g67",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 40,
+      "package": "anyio",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-82r6-8w77-94w6",
+      "cve": "CVE-2026-63374",
+      "severity": "critical",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": "< 4.14.2",
+      "patched": {
+        "identifier": "4.14.2"
+      },
+      "url": "https://github.com/advisories/GHSA-82r6-8w77-94w6",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 39,
+      "package": "anyio",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-5p39-cfhj-2xmp",
+      "cve": "CVE-2026-64847",
+      "severity": "medium",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": "< 4.14.2",
+      "patched": {
+        "identifier": "4.14.2"
+      },
+      "url": "https://github.com/advisories/GHSA-5p39-cfhj-2xmp",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 38,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-3wxw-xv34-2frg",
+      "cve": "CVE-2026-78679",
+      "severity": "medium",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "score": 6.5
+      },
+      "affected": "<= 3.1.58",
+      "patched": {
+        "identifier": "3.1.59"
+      },
+      "url": "https://github.com/advisories/GHSA-3wxw-xv34-2frg",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 37,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-8mcc-hrx5-hvxc",
+      "cve": "CVE-2026-78677",
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "score": 7.5
+      },
+      "affected": "<= 3.1.58",
+      "patched": {
+        "identifier": "3.1.59"
+      },
+      "url": "https://github.com/advisories/GHSA-8mcc-hrx5-hvxc",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 36,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-5xxx-qhh7-9287",
+      "cve": "CVE-2026-78678",
+      "severity": "medium",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "score": 6.5
+      },
+      "affected": "<= 3.1.58",
+      "patched": {
+        "identifier": "3.1.59"
+      },
+      "url": "https://github.com/advisories/GHSA-5xxx-qhh7-9287",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 35,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-284h-m62q-gf8w",
+      "cve": "CVE-2026-78676",
+      "severity": "critical",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "score": 9.8
+      },
+      "affected": "<= 3.1.58",
+      "patched": {
+        "identifier": "3.1.59"
+      },
+      "url": "https://github.com/advisories/GHSA-284h-m62q-gf8w",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 34,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-7833-fr7j-v32q",
+      "cve": "CVE-2026-78675",
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "score": 8.4
+      },
+      "affected": "<= 3.1.58",
+      "patched": {
+        "identifier": "3.1.59"
+      },
+      "url": "https://github.com/advisories/GHSA-7833-fr7j-v32q",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 33,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-wvpp-8hx9-p66j",
+      "cve": "CVE-2026-76220",
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "score": 8.8
+      },
+      "affected": "<= 3.1.57",
+      "patched": {
+        "identifier": "3.1.58"
+      },
+      "url": "https://github.com/advisories/GHSA-wvpp-8hx9-p66j",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 32,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-jm78-9fvv-mhgr",
+      "cve": null,
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "score": 8.8
+      },
+      "affected": "<= 3.1.57",
+      "patched": {
+        "identifier": "3.1.58"
+      },
+      "url": "https://github.com/advisories/GHSA-jm78-9fvv-mhgr",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 31,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-hmq2-w58f-27jc",
+      "cve": "CVE-2026-76222",
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:N/I:H/A:L",
+        "score": 8.2
+      },
+      "affected": "<= 3.1.57",
+      "patched": {
+        "identifier": "3.1.58"
+      },
+      "url": "https://github.com/advisories/GHSA-hmq2-w58f-27jc",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 30,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-hh9p-6wh2-4mfc",
+      "cve": "CVE-2026-76217",
+      "severity": "medium",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "score": 6.5
+      },
+      "affected": "<= 3.1.57",
+      "patched": {
+        "identifier": "3.1.58"
+      },
+      "url": "https://github.com/advisories/GHSA-hh9p-6wh2-4mfc",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 29,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-9rj7-rf2p-w77r",
+      "cve": "CVE-2026-76218",
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "score": 7.5
+      },
+      "affected": "<= 3.1.57",
+      "patched": {
+        "identifier": "3.1.58"
+      },
+      "url": "https://github.com/advisories/GHSA-9rj7-rf2p-w77r",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 28,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-4gmw-gg2m-w46p",
+      "cve": "CVE-2026-76219",
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
+        "score": 8.1
+      },
+      "affected": "<= 3.1.57",
+      "patched": {
+        "identifier": "3.1.58"
+      },
+      "url": "https://github.com/advisories/GHSA-4gmw-gg2m-w46p",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 27,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-p538-c434-8v24",
+      "cve": null,
+      "severity": "medium",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L",
+        "score": 5.4
+      },
+      "affected": "<= 3.1.55",
+      "patched": {
+        "identifier": "3.1.56"
+      },
+      "url": "https://github.com/advisories/GHSA-p538-c434-8v24",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 26,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-539m-9xh6-q6rr",
+      "cve": null,
+      "severity": "medium",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "score": 6.5
+      },
+      "affected": "<= 3.1.56",
+      "patched": {
+        "identifier": "3.1.57"
+      },
+      "url": "https://github.com/advisories/GHSA-539m-9xh6-q6rr",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 25,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-3f7w-8rr8-f37f",
+      "cve": null,
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
+        "score": 8.1
+      },
+      "affected": "<= 3.1.56",
+      "patched": {
+        "identifier": "3.1.57"
+      },
+      "url": "https://github.com/advisories/GHSA-3f7w-8rr8-f37f",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 23,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-r9mr-m37c-5fr3",
+      "cve": null,
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "score": 8.8
+      },
+      "affected": "<= 3.1.53",
+      "patched": {
+        "identifier": "3.1.54"
+      },
+      "url": "https://github.com/advisories/GHSA-r9mr-m37c-5fr3",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 22,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-6p8h-3wgx-97gf",
+      "cve": null,
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "score": 7.5
+      },
+      "affected": "<= 3.1.53",
+      "patched": {
+        "identifier": "3.1.54"
+      },
+      "url": "https://github.com/advisories/GHSA-6p8h-3wgx-97gf",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 21,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-fjr4-x663-mwxc",
+      "cve": null,
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
+        "score": 8.1
+      },
+      "affected": "<= 3.1.53",
+      "patched": {
+        "identifier": "3.1.54"
+      },
+      "url": "https://github.com/advisories/GHSA-fjr4-x663-mwxc",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 20,
+      "package": "gitpython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-3rp5-jjmw-4wv2",
+      "cve": "CVE-2026-69097",
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "score": 7.0
+      },
+      "affected": "<= 3.1.52",
+      "patched": {
+        "identifier": "3.1.53"
+      },
+      "url": "https://github.com/advisories/GHSA-3rp5-jjmw-4wv2",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 18,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-956x-8gvw-wg5v",
+      "cve": "CVE-2026-67323",
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "score": 8.4
+      },
+      "affected": "<= 3.1.50",
+      "patched": {
+        "identifier": "3.1.51"
+      },
+      "url": "https://github.com/advisories/GHSA-956x-8gvw-wg5v",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 17,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-2f96-g7mh-g2hx",
+      "cve": "CVE-2026-67325",
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "score": 8.8
+      },
+      "affected": "<= 3.1.50",
+      "patched": {
+        "identifier": "3.1.51"
+      },
+      "url": "https://github.com/advisories/GHSA-2f96-g7mh-g2hx",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 16,
+      "package": "GitPython",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-v396-v7q4-x2qj",
+      "cve": null,
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": "= 3.1.50",
+      "patched": {
+        "identifier": "3.1.51"
+      },
+      "url": "https://github.com/advisories/GHSA-v396-v7q4-x2qj",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 15,
+      "package": "pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-9hw9-ch79-4vh6",
+      "cve": "CVE-2026-59205",
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "score": 7.5
+      },
+      "affected": "< 12.3.0",
+      "patched": {
+        "identifier": "12.3.0"
+      },
+      "url": "https://github.com/advisories/GHSA-9hw9-ch79-4vh6",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 14,
+      "package": "pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-vjc4-5qp5-m44j",
+      "cve": "CVE-2026-59204",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": ">= 8.2.0, < 12.3.0",
+      "patched": {
+        "identifier": "12.3.0"
+      },
+      "url": "https://github.com/advisories/GHSA-vjc4-5qp5-m44j",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 13,
+      "package": "pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-pg7v-jwj7-p798",
+      "cve": "CVE-2026-59203",
+      "severity": "medium",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+        "score": 5.3
+      },
+      "affected": ">= 12.0.0, < 12.3.0",
+      "patched": {
+        "identifier": "12.3.0"
+      },
+      "url": "https://github.com/advisories/GHSA-pg7v-jwj7-p798",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 12,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-jjj6-mw9f-p565",
+      "cve": "CVE-2026-59200",
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "score": 7.5
+      },
+      "affected": ">= 5.1.0, < 12.3.0",
+      "patched": {
+        "identifier": "12.3.0"
+      },
+      "url": "https://github.com/advisories/GHSA-jjj6-mw9f-p565",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 11,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-6r8x-57c9-28j4",
+      "cve": "CVE-2026-59199",
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "score": 7.5
+      },
+      "affected": "< 12.3.0",
+      "patched": {
+        "identifier": "12.3.0"
+      },
+      "url": "https://github.com/advisories/GHSA-6r8x-57c9-28j4",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 10,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-fj7v-r99m-22gq",
+      "cve": "CVE-2026-59198",
+      "severity": "medium",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:L",
+        "score": 6.5
+      },
+      "affected": ">= 5.2.0, < 12.3.0",
+      "patched": {
+        "identifier": "12.3.0"
+      },
+      "url": "https://github.com/advisories/GHSA-fj7v-r99m-22gq",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 9,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-xj96-63gp-2gmr",
+      "cve": "CVE-2026-59197",
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H",
+        "score": 8.2
+      },
+      "affected": "< 12.3.0",
+      "patched": {
+        "identifier": "12.3.0"
+      },
+      "url": "https://github.com/advisories/GHSA-xj96-63gp-2gmr",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 8,
+      "package": "Pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-4x4j-2g7c-83w6",
+      "cve": "CVE-2026-55798",
+      "severity": "medium",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L",
+        "score": 4.5
+      },
+      "affected": "< 12.3.0",
+      "patched": {
+        "identifier": "12.3.0"
+      },
+      "url": "https://github.com/advisories/GHSA-4x4j-2g7c-83w6",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 7,
+      "package": "pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-phj9-mv4w-65pm",
+      "cve": "CVE-2026-55380",
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "score": 7.5
+      },
+      "affected": "< 12.3.0",
+      "patched": {
+        "identifier": "12.3.0"
+      },
+      "url": "https://github.com/advisories/GHSA-phj9-mv4w-65pm",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 6,
+      "package": "pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-45hq-cxwh-f6vc",
+      "cve": "CVE-2026-55379",
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "score": 7.5
+      },
+      "affected": "< 12.3.0",
+      "patched": {
+        "identifier": "12.3.0"
+      },
+      "url": "https://github.com/advisories/GHSA-45hq-cxwh-f6vc",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 5,
+      "package": "pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-5x94-69rx-g8h2",
+      "cve": "CVE-2026-54060",
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "score": 7.5
+      },
+      "affected": "< 12.3.0",
+      "patched": {
+        "identifier": "12.3.0"
+      },
+      "url": "https://github.com/advisories/GHSA-5x94-69rx-g8h2",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 4,
+      "package": "pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-8v84-f9pq-wr9x",
+      "cve": "CVE-2026-54059",
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "score": 7.5
+      },
+      "affected": "< 12.3.0",
+      "patched": {
+        "identifier": "12.3.0"
+      },
+      "url": "https://github.com/advisories/GHSA-8v84-f9pq-wr9x",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 3,
+      "package": "pillow",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-62p4-gmf7-7g93",
+      "cve": "CVE-2026-54058",
+      "severity": "high",
+      "cvss": {
+        "vector_string": null,
+        "score": 0.0
+      },
+      "affected": "< 12.3.0",
+      "patched": {
+        "identifier": "12.3.0"
+      },
+      "url": "https://github.com/advisories/GHSA-62p4-gmf7-7g93",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 2,
+      "package": "starlette",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-82w8-qh3p-5jfq",
+      "cve": "CVE-2026-54283",
+      "severity": "high",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "score": 7.5
+      },
+      "affected": ">= 0.4.1, < 1.3.1",
+      "patched": {
+        "identifier": "1.3.1"
+      },
+      "url": "https://github.com/advisories/GHSA-82w8-qh3p-5jfq",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    },
+    {
+      "number": 1,
+      "package": "Starlette",
+      "manifest": "uv.lock",
+      "ghsa": "GHSA-jp82-jpqv-5vv3",
+      "cve": "CVE-2026-54282",
+      "severity": "low",
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+        "score": 3.7
+      },
+      "affected": "< 1.3.0",
+      "patched": {
+        "identifier": "1.3.0"
+      },
+      "url": "https://github.com/advisories/GHSA-jp82-jpqv-5vv3",
+      "disposition": "Absent from current main tree; not an installed browser dependency. Alert remains open pending graph reconciliation."
+    }
+  ]
+}

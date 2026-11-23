@@ -10,7 +10,7 @@ Enter the instance's HTTPS origin and an API token created by the bot owner with
 - `POST /v1/extras/install` with `{ "id": "example", "ref": "<commit SHA>" }`
 - `POST /v1/extras/remove` with `{ "id": "example" }`
 
-Requests use `Authorization: Bearer <token>`. Credentials stay in page memory, are cleared from the password input after connecting, and are discarded on disconnect or reload. They are never sent to GitHub or stored in localStorage. The bot validates host approval, owner-token ownership, pinned commit, compatibility manifest, and installation contents itself. Installation runs code on the bot's host; the site asks for confirmation before changes.
+Requests use `Authorization: Bearer <token>`. Credentials stay in page memory, are cleared from the password input after connecting, and are discarded on disconnect, page exit, or 15 minutes without activity. They are never sent to GitHub or stored in localStorage. The bot validates host approval, owner-token ownership, pinned commit, compatibility manifest, and installation contents itself. Installation runs code on the bot's host; the site asks for confirmation before changes.
 
 Before connecting, the site checks public `GET /v1/discovery` metadata to confirm that the instance identifies as Project Nationdex 2026 and supports extras protocol version 1.
 
@@ -29,10 +29,33 @@ Add a reviewed entry to `data/extras.json` and submit a pull request:
 }
 ```
 
-`branch` controls display metadata lookup; `ref` controls remote installation. The instance independently checks the requested pin against its trusted catalogue. Entries without a valid pinned commit remain discoverable but cannot be installed remotely. The existing `ndscript` entry currently has no verified pin and remains unavailable for remote installation.
+`ref` controls remote installation and display metadata lookup for pinned entries; `branch` supplies display metadata only when no pin exists. The instance independently checks the requested pin against its trusted catalogue. Entries without a valid pinned commit remain discoverable but cannot be installed remotely. The existing `ndscript` entry currently has no verified pin and remains unavailable for remote installation.
 
 The catalogue does not accept an arbitrary repository supplied by a browser. Removing an extra preserves its data; runtime activation or removal may require a bot restart, as reported by the instance.
 
-## Frontend assets
+## Frontend
 
-Existing Alpine.js, Tailwind browser runtime, and highlight.js scripts are vendored in `vendor/` so scripts from a third-party CDN do not execute in the page containing an instance credential. Their original sources and versions are recorded in `vendor/README.md`. Fonts and stylesheets are still loaded from their existing providers.
+Native CSS and browser JavaScript; no framework, CSS compiler, third-party browser dependencies, package installation or build step. All styles and scripts are served locally. The catalogue retrieves GitHub package metadata as data, never executable code.
+
+The interface preserves catalogue search, tabs, theme switching, code examples, and remote install/update/remove operations. The manager only opens in a top-level tab. Use a current browser with ES modules, CSP external script hashes, AbortSignal.timeout and AbortSignal.any support.
+
+## Security and development
+
+See [the audit and deployment limits](security/walkthrough.md) and [the GitHub advisory snapshot](security/dependency-alerts.json). Repository protection and bot-side authorization remain necessary; a frontend cannot make a compromised deployment safe for owner credentials.
+
+Run the security checks:
+
+```sh
+python3 tests/update-integrity.py
+node --test tests/security.test.js
+```
+
+The module is authorized by an exact CSP hash and a matching integrity attribute. After reviewing a change to `assets/index.js`, refresh both and rerun the security check:
+
+```sh
+python3 tests/update-integrity.py
+python3 tests/update-integrity.py
+node --test tests/security.test.js
+```
+
+Serve the root as static files for local preview. `tests/browser-security.mjs` exports a Playwright audit function for a page pointed at localhost:8765, using mock endpoints and a dummy token. No real instance is required. CI checks source integrity and the unit security invariants; browser verification is recorded in the audit.

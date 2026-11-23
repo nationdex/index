@@ -21,9 +21,18 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
+      - name: Verify security invariants
+        run: |
+          python3 tests/update-integrity.py
+          git diff --exit-code -- index.html
+          node --test tests/security.test.js
+
       - name: Verify static site files
         run: |
           test -f index.html
           test -f logo.png
           test -f data/extras.json
-          grep -q './data/extras.json' index.html
+          test -f assets/index.js
+          test -f assets/index.css
+          test -f assets/examples.json
+          test ! -d vendor
